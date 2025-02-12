@@ -1,0 +1,9 @@
+{
+  "label": "Howtos",
+  "collapsible": true,
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Howtos"
+  }
+}

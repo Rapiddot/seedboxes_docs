@@ -1,0 +1,49 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #e67e22;
+  --ifm-color-primary-dark: #d35400;
+  --ifm-color-primary-darker: #c0392b;
+  --ifm-color-primary-darkest: #a04000;
+  --ifm-color-primary-light: #f39c12;
+  --ifm-color-primary-lighter: #f1c40f;
+  --ifm-color-primary-lightest: #f5b041;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #ff9f43;
+  --ifm-color-primary-dark: #ff8c1a;
+  --ifm-color-primary-darker: #ff7f00;
+  --ifm-color-primary-darkest: #e67300;
+  --ifm-color-primary-light: #ffb266;
+  --ifm-color-primary-lighter: #ffbf80;
+  --ifm-color-primary-lightest: #ffd9b3;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.intro_container .card {
+  background-color: transparent !important;
+
+  .card__body img {
+    height: 130px;
+  }
+}
+
+.center-img {
+  display: flex;
+  justify-content: center;
+}
+
+.markdown img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

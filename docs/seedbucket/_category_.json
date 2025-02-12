@@ -1,0 +1,9 @@
+{
+    "label": "Seedbucket",
+    "collapsible": true,
+    "position": 1.5,
+    "link": {
+      "type": "generated-index",
+      "title": "Seedbucket"
+    }
+  }
