@@ -34,7 +34,7 @@ In detail:
 :::info Note
 
 Filezilla doesn't support multi-segmented downloading (which is different from simultaneous transferring).
-If you need multi-segmented downloading, in order to maximize your FTP download speed, then refer to [this](../Howtos/Optimize_FTP_downloads_from_your_seedbox_with_multi-part__multi-segmented__downloading) guide
+If you need multi-segmented downloading, in order to maximize your FTP download speed, then refer to [this](./Optimize_FTP_downloads_from_your_seedbox_with_multi-part__multi-segmented__downloading.md) guide
 
 :::
 

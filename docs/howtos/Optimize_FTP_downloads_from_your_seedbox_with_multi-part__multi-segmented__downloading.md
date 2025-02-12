@@ -136,7 +136,7 @@ aria2c --ftp-user=**user** --ftp-passwd=**password** -s8 -x8 ftp://**user**.clou
 Replace user and password accordingly, update the FTP url too as well as the path of the file and choose how many parts you want the file to be splitted too (*-s8* means split file to 8 connections and *-x8* means 8 maximum connections per server)
 
 :::info
- Aria2 still doesn't support FTPS (encrypted traffic), so if you want the traffic to be encrypted, you should change the protocol to SFTP (and also the port). Even though this guide is for FTP, if you want both encryption and multi-segment, you need to change it to either SFTP, or continue to use FTP while also using our [wireguard VPN service](../Quick_Start/How_to_use_your_Seedboxes.cc_VPN_service).
+ Aria2 still doesn't support FTPS (encrypted traffic), so if you want the traffic to be encrypted, you should change the protocol to SFTP (and also the port). Even though this guide is for FTP, if you want both encryption and multi-segment, you need to change it to either SFTP, or continue to use FTP while also using our [wireguard VPN service](../gettingstarted/How_to_use_your_Seedboxes.cc_VPN_service.md).
  :::
 
 For the above example in SFTP, it should be:
