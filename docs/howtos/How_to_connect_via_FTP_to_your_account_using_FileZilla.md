@@ -1,3 +1,15 @@
+---
+id: how-to-connect-via-ftp-to-your-account-using-filezilla
+title: How to connect via FTP to your account using FileZilla
+description: Learn how to connect to your seedbox account via FTP using FileZilla with this step-by-step guide.
+keywords:
+    - FTP
+    - FileZilla
+    - seedbox
+    - connect via FTP
+    - FileZilla configuration
+---
+
 # How to connect via FTP to your account using Filezilla
 
 [FileZilla](https://filezilla-project.org), is a neat and lightweight ftp **client**, which is available for Windows, MacOSX and Linux

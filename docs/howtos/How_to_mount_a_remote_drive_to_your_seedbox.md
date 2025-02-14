@@ -1,3 +1,19 @@
+---
+id: how-to-mount-remote-drive
+title: How to mount a remote drive to your seedbox
+description: Learn how to mount Google Drive, Dropbox, or S3 to your seedbox using rclone for seamless integration with apps like Sonarr and Radarr.
+keywords:
+    - seedbox
+    - remote drive
+    - Google Drive
+    - Dropbox
+    - S3
+    - rclone
+    - mount
+    - Sonarr
+    - Radarr
+---
+
 # How to mount a remote drive to your seedbox
 
 ## Introduction

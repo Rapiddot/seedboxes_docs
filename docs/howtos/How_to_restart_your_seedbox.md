@@ -1,3 +1,15 @@
+---
+id: how-to-restart-your-seedbox
+title: How to Restart Your Seedbox
+description: Learn how to restart your seedbox and troubleshoot common issues such as disk space limits and file deletions.
+keywords:
+    - seedbox
+    - restart seedbox
+    - troubleshoot seedbox
+    - rtorrent
+    - seedbox client area
+---
+
 # How to restart your seedbox
 
 All our servers come with automation software, which checks every 30 minutes every aspect of the server to guarantee its normal operation. This service checks if your rtorrent client is running too. If it's not, then it starts it automatically.

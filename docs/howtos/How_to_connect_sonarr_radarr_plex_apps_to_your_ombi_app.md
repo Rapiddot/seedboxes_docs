@@ -1,3 +1,17 @@
+---
+id: how-to-connect-sonarr-radarr-plex-to-ombi
+title: How to Connect Sonarr, Radarr, and Plex to Your Ombi App
+description: Learn how to connect Sonarr, Radarr, and Plex to your Ombi app for seamless media management and content requests.
+keywords:
+    - Ombi
+    - Sonarr
+    - Radarr
+    - Plex
+    - Media Server
+    - Content Requests
+    - Seedboxes
+---
+
 # How to connect sonarr, radarr and plex to your ombi app
 
 ## Introduction

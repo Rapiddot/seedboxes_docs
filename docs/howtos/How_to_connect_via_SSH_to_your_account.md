@@ -1,3 +1,17 @@
+---
+id: how-to-connect-via-ssh
+title: How to connect via SSH to your account
+description: Learn how to connect to your seedbox account via SSH using PuTTY on Windows or Terminal on Mac and Linux.
+keywords:
+    - SSH
+    - seedbox
+    - PuTTY
+    - Terminal
+    - Windows
+    - Mac
+    - Linux
+---
+
 # How to connect via SSH to your account
 
 ## Windows Users

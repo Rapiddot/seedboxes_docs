@@ -1,8 +1,15 @@
 ---
-description: Understand how the internet works, including peering, throttling, latency, and protocols, to optimize your seedbox experience and troubleshoot network speed issues.
-keywords: [internet, networks, peering, throttling, latency, TCP, FTP, HTTP, SSH, SFTP, bandwidth, ISP, routing, congestion, Seedboxes.cc, speedtest, reroute, network performance]
+id: how-the-internet-works
+title: How the Internet Works
+description: An in-depth explanation of how the internet works, including networks, peering, throttling, latency, and protocols.
+keywords:
+    - internet
+    - networks
+    - peering
+    - throttling
+    - latency
+    - protocols
 ---
-
 # How the internet works
 
 Let's talk about networks. There are times where you are trying to download something from your Seedbox and the speed is just terrible or try to stream from Plex and it keeps buffering all the time. Other times you wonder why, even though you have a 1Gbp/s Fiber connection you can utialize only 10% of your available bandwidth and it just won't go faster. You might be thinking that there is something wrong with the server, 99% of the case is not.

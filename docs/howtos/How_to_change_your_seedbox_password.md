@@ -1,3 +1,15 @@
+---
+id: change-seedbox-password
+title: How to Change Your Seedbox Password
+description: Learn how to change your seedbox password easily by following these simple steps. Ensure your account security by updating your password regularly.
+keywords:
+    - seedbox
+    - change password
+    - seedbox password
+    - update password
+    - seedbox security
+---
+
 # How to change your seedbox password
 
 Changing your seedbox password is a simple procedure:
@@ -14,10 +26,9 @@ Changing your seedbox password is a simple procedure:
 
 ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491560258172.jpeg)
 
-4. The figure below shows the window that is going to pop when  you click on **"Change Password"**.
+4. The figure below shows the window that is going to pop when you click on **"Change Password"**.
 
 * Go ahead and type a new password. It should be less than 16 characters. Only alphanumeric characters are allowed.
 * Click **"Change Password"** and you shall receive a confirmation that your password has been changed. Please allow 1-2 minutes for the change to propagate to your server then try to login with your new password.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491560310379.jpeg)
-
+![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491560310379.jpeg) How to change your seedbox password   

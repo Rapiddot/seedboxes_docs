@@ -1,3 +1,18 @@
+---
+id: how-to-connect-nzbget-sabnzbd-to-sonarr-radarr
+title: How to Connect NZBGet or SABnzbd to Sonarr or Radarr
+description: Learn how to connect your NZBGet or SABnzbd apps to your Sonarr or Radarr apps for seamless Usenet downloading.
+keywords:
+    - NZBGet
+    - SABnzbd
+    - Sonarr
+    - Radarr
+    - Usenet
+    - Newsgroups
+    - Indexer
+    - Download Client
+---
+
 # How to connect your nzbget or sabnzbd apps to your sonarr or radarr apps
 
 ## Introduction

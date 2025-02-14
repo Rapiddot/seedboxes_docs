@@ -1,3 +1,15 @@
+---
+title: Are multiple torrent clients allowed on the same seedbox?
+id: multiple-torrent-clients
+description: Information about the policy on running multiple torrent clients on the same seedbox slot.
+keywords:
+    - torrent clients
+    - seedbox
+    - multiple clients
+    - server resources
+    - Red Dragon Box
+---
+
 # Are multiple torrent clients allowed on the same seedbox ?
 
 We do not allow running multiple instances of torrent clients on each slot. Each slot is entitled on running a single torrent client (rtorrent, deluge or transmission).

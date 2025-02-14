@@ -1,10 +1,26 @@
+---
+id: http-proxy-ssh-tunnel
+title: HTTP Proxy through simple SSH Tunnel
+description: Learn how to set up an HTTP proxy through a simple SSH tunnel on macOS, Linux, and Windows. Follow our step-by-step guide for secure browsing.
+keywords:
+    - HTTP Proxy
+    - SSH Tunnel
+    - macOS
+    - Linux
+    - Windows
+    - Secure Browsing
+    - SOCKS5 Proxy
+---
+
+# HTTP Proxy through simple SSH Tunnel
+
 Choose a guide depending on your operating system
 
 ## MAC OSX / Linux
 
 Simply open a terminal and type:
-```
-ssh -l \{USERNAME\} -p {SSH_PORT} -D 6666 \{USERNAME\}.cloud.seedboxes.cc
+```bash
+ssh -l {USERNAME} -p {SSH_PORT} -D 6666 {USERNAME}.cloud.seedboxes.cc
 ```
 
 It will ask for your password, you type the password and click enter. Once you login, minimize the window, but don't close it. 
@@ -38,8 +54,10 @@ Same as in MAC OS X/ Linux, open your Firefox browser, and in your browser conne
 * **hostname:** localhost
 * **port:** \{PORT NUMBER YOU CHOSE in step 2, 6666 in this case\}
 
-Tip: You can make multiple profiles, one for each of your browsers (in case you use it in a more advanced way), just make sure to use a different socks proxy port for each connection.
+:::tip
+You can make multiple profiles, one for each of your browsers (in case you use it in a more advanced way), just make sure to use a different socks proxy port for each connection.
 This app is nice, works reliably, minimizes to your tray, has tons of options for automatic reconnects etc.
+:::
 
 You can check a more detailed section for Firefox just below
 

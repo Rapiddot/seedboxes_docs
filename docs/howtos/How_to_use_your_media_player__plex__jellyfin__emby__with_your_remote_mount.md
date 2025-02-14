@@ -1,3 +1,17 @@
+---
+id: how-to-use-your-media-player-with-your-remote-mount
+title: How to Use Your Media Player with Your Remote Mount
+description: Learn how to use Plex, Jellyfin, or Emby with your remote mount to access your cloud media on your seedbox.
+keywords:
+  - Plex
+  - Jellyfin
+  - Emby
+  - remote mount
+  - seedbox
+  - cloud media
+  - media player
+---
+
 # How to use your media player with your remote mount
 
 ## Introduction

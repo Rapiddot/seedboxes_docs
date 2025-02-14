@@ -1,3 +1,15 @@
+---
+id: create-torrent-command-line
+title: How to create a torrent from the command line
+description: Learn how to create a torrent file from the command line using mktorrent. Follow this step-by-step guide to generate torrent files easily.
+keywords:
+    - torrent
+    - command line
+    - mktorrent
+    - create torrent
+    - seedboxes
+---
+
 # How to create a torrent from the command line
 
 1. First of all, you should start with [How to connect via ssh to your account](./How_to_connect_via_SSH_to_your_account.md)

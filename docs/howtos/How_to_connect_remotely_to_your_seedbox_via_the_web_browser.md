@@ -1,3 +1,18 @@
+---
+id: how-to-connect-remotely-to-your-seedbox-via-the-web-browser
+title: How to Connect Remotely to Your Seedbox via the Web Browser
+description: Learn how to easily connect remotely to your seedbox using your web browser without the need for extra applications or terminals.
+keywords:
+    - seedbox
+    - remote connection
+    - web browser
+    - SSH
+    - seedbucket
+    - SFTP
+    - FTP
+    - terminal
+---
+
 # How to connect remotely to your seedbox via the web browser
 
 ## Introduction

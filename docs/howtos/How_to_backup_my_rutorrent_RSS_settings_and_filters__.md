@@ -1,3 +1,14 @@
+---
+id: how-to-backup-rutorrent-rss-settings
+title: How to Backup My Rutorrent RSS Settings and Filters
+description: Learn how to backup your rutorrent RSS settings and filters to prevent data loss and ensure easy restoration.
+keywords:
+    - rutorrent
+    - RSS settings
+    - backup
+    - filters
+---
+
 # How to backup my rutorrent RSS settings and filters
 
 Rutorrent stores its rss settings and filter list in a single file, in json format, which - although rare - is easy to get corrupted over time.

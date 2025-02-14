@@ -1,4 +1,17 @@
 ---
+id: optimize-ftp-downloads
+title: Optimize FTP downloads from your seedbox with multi-segmented downloading
+description: Learn how to maximize your FTP download speeds from your seedbox by using multi-segmented downloading with various FTP clients on Windows, Mac OSX, and Linux.
+keywords:
+    - FTP
+    - multi-segmented downloading
+    - seedbox
+    - download optimization
+    - CuteFTP
+    - iGetter
+    - Cyberduck
+    - aria2
+    - lftp
 toc_min_heading_level: 2
 toc_max_heading_level: 4
 ---

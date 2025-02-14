@@ -1,3 +1,14 @@
+---
+title: Terms of Service
+id: terms-of-service
+description: Rules and regulations for using Seedboxes.cc shared hosting services.
+keywords:
+    - Terms of Service
+    - Seedboxes.cc
+    - Hosting Rules
+    - Service Agreement
+    - Content Policy
+---
 # Terms of Service
 
 These are the "rules" for Seedboxes.cc accounts. In order to make sure our systems run smoothly, we have to set and enforce rules. These rules are here to protect our customers!

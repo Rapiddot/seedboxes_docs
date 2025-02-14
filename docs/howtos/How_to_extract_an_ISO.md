@@ -1,3 +1,14 @@
+---
+id: how-to-extract-an-iso
+title: How to extract an ISO
+description: Learn how to extract an ISO file via SSH with simple steps. Follow our guide to easily extract ISO files on your server.
+keywords:
+    - extract ISO
+    - ISO file extraction
+    - SSH ISO extraction
+    - server ISO extraction
+---
+
 # How to extract an iso
 In order to extract an ISO you need to do it via SSH. Just follow these easy steps:
 

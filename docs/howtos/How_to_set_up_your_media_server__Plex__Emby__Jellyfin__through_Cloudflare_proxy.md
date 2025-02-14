@@ -1,3 +1,18 @@
+---
+id: setup-media-server-cloudflare-proxy
+title: How to Setup Your Media Server Through Cloudflare Proxy
+description: Learn how to set up your media server (Plex, Emby, Jellyfin) through Cloudflare proxy to reduce buffering and improve streaming performance.
+keywords:
+    - media server
+    - Cloudflare proxy
+    - Plex setup
+    - Emby setup
+    - Jellyfin setup
+    - reduce buffering
+    - streaming performance
+    - custom domain
+---
+
 # How to setup your media server through Cloudflare proxy
 
 ## Introduction

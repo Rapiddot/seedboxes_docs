@@ -1,3 +1,16 @@
+---
+id: how-to-backup-restore-settings
+title: How to easily backup and restore settings for your apps
+description: Learn how to easily backup and restore settings for your apps on your seedbox using Sonarr as an example. This guide covers both backup and restore processes.
+keywords:
+    - backup
+    - restore
+    - seedbox
+    - Sonarr
+    - app settings
+    - configuration
+---
+
 # How to easily backup and restore settings for your apps
 
 ## Introduction

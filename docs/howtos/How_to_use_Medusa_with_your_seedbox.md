@@ -1,3 +1,16 @@
+---
+id: how-to-use-medusa-with-your-seedbox
+title: How to use Medusa with your seedbox
+description: Learn how to install and configure Medusa on your seedbox to automate the management of your TV show library, including downloading, renaming, and organizing episodes.
+keywords:
+    - Medusa
+    - seedbox
+    - TV shows
+    - automation
+    - subtitles
+    - post-processing
+---
+
 # How to use Medusa with your seedbox
 
 ## Introduction

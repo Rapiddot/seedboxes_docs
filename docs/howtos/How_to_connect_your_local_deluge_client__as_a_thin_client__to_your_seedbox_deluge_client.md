@@ -1,3 +1,16 @@
+---
+id: how-to-connect-local-deluge-client
+title: How to Connect Your Local Deluge Client as a Thin Client to Your Seedbox Deluge Client
+description: Learn how to use Deluge thin client to connect to your Deluge daemon from your PC and control your seedbox Deluge client remotely.
+keywords:
+    - deluge
+    - thin client
+    - seedbox
+    - torrent client
+    - remote connection
+    - deluge setup
+---
+
 # How to use deluge thin client to connect to your deluge daemon from your pc
 
 ## Introduction

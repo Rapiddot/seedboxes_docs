@@ -1,3 +1,16 @@
+---
+id: how-to-use-jackett-with-sonarr
+title: How to use Jackett with Sonarr
+description: Learn how to integrate Jackett with Sonarr to scrape torrents and manage your media library efficiently. Follow this step-by-step guide for installation and configuration.
+keywords:
+    - Jackett
+    - Sonarr
+    - torrent scraping
+    - media management
+    - indexer
+    - installation guide
+---
+
 # How to use Jackett with Sonarr
 
 ## Introduction

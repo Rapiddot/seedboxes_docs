@@ -1,3 +1,15 @@
+---
+title: Seeding Tips for Seedbox Users
+id: seeding-tips
+description: Learn how to effectively seed torrents using a seedbox to maximize your upload speed and ratio.
+keywords:
+    - seedbox
+    - seeding tips
+    - torrenting
+    - bittorrent
+    - upload speed
+---
+
 ## Introduction
 So you got a seedbox! (Hopefully from us :) . You add a few torrents and you expect them to start seeding immediatelly once they are finished downloading. It may happen, but if you chose the torrents you added poorly, then probably you will be surprised!
 

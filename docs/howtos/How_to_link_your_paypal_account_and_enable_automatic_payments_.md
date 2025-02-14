@@ -1,3 +1,15 @@
+---
+id: how-to-link-paypal-account
+title: How to Link Your PayPal Account and Enable Automatic Payments
+description: Learn how to link your PayPal account with Seedboxes.cc to enable automatic payments and simplify your billing process.
+keywords:
+    - Seedboxes.cc
+    - PayPal
+    - automatic payments
+    - link PayPal account
+    - billing
+---
+
 # How to link your paypal account in order to enable automatic payments
 
 ## Introduction

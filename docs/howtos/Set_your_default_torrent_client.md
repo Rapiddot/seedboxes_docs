@@ -1,3 +1,10 @@
+---
+title: "Set Your Default Torrent Client"
+id: "set-your-default-torrent-client"
+description: "Learn how to change your default torrent client on your seedbox."
+keywords: ["torrent client", "seedbox", "change torrent client", "default torrent client"]
+---
+
 # How to change your torrent client
 
 During the order of your seedbox, you were asked which client you prefer as your default. However, if you ever change your mind in the future, it is simple to change your torrent client.

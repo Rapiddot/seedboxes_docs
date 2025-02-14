@@ -1,3 +1,18 @@
+---
+id: how-to-use-sonarr-and-radarr-with-remote-mount
+title: How to use Sonarr and Radarr with your remote mount
+description: Learn how to use Sonarr and Radarr with your remote mount on your seedbox to access and organize your cloud media content.
+keywords:
+    - Sonarr
+    - Radarr
+    - remote mount
+    - seedbox
+    - cloud media
+    - Google Drive
+    - Dropbox
+    - media organization
+---
+
 # How to use Sonarr and Radarr with your remote mount
 
 ## Introduction

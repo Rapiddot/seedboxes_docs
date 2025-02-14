@@ -1,3 +1,15 @@
+---
+id: how-to-use-two-factor-authentication-with-google-authenticator
+title: How to Use Two Factor Authentication with Google Authenticator
+description: Learn how to enable and use TOTP two factor authentication with Google Authenticator on Seedboxes.cc to enhance the security of your account.
+keywords:
+   - two factor authentication
+   - Google Authenticator
+   - TOTP
+   - Seedboxes.cc
+   - account security
+---
+
 # How to use 2 Factor Authentication with Google Authenticator
 
 ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491809202416.png)

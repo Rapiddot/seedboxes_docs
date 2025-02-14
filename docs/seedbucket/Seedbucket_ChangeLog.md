@@ -1,4 +1,14 @@
-# Changelog
+---
+title: "Seedbucket Changelog"
+id: "seedbucket-changelog"
+description: "This document provides a detailed changelog for all versions of Seedbucket"
+keywords:
+    - seedbucket
+    - changelog
+    - software development
+---
+
+# Seedbucket Changelog
 
 ### **Version 2.3.1 (10/Feb/2020)**
 

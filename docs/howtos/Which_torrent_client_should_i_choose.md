@@ -1,3 +1,15 @@
+---
+title: Which torrent client should I choose?
+id: which-torrent-client-should-i-choose
+description: A guide to help you choose the best torrent client for your needs, including pros and cons of Qbitorrent, Rtorrent, Deluge, and Transmission.
+keywords:
+    - torrent client
+    - Qbitorrent
+    - Rtorrent
+    - Deluge
+    - Transmission
+    - seedboxes
+---
 # Which torrent client should i choose?
 
 We currently support all major torrent client for our slots. Below we will mention the pros and cons of each one:

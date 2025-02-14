@@ -1,3 +1,20 @@
+---
+id: setup-unpackerr
+title: How to setup Unpackerr with UnpackerrUI on your seedbox
+description: Learn how to set up Unpackerr with UnpackerrUI on your seedbox to automatically extract compressed files for Starr apps like Lidarr, Radarr, Readarr, Sonarr, and Whisparr.
+keywords:
+    - Unpackerr
+    - UnpackerrUI
+    - seedbox
+    - Starr apps
+    - Lidarr
+    - Radarr
+    - Readarr
+    - Sonarr
+    - Whisparr
+    - automatic extraction
+---
+
 # How to setup Unpackerr with UnpackerrUI on your seedbox
 
 ## Introduction

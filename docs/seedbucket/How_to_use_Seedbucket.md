@@ -1,4 +1,51 @@
 ---
+title: How to use Seedbucket
+id: how-to-use-seedbucket
+description: A comprehensive guide on how to use Seedbucket for managing your seedbox, including installation, dashboards, external storage drives, and more.
+keywords:
+    - Seedbucket
+    - seedbox management
+    - file manager
+    - torrent client
+    - external storage drives
+    - cloud storage
+    - encryption
+    - media library
+    - download center
+    - profile settings
+    - dashboards
+    - discover movies
+    - TV shows
+    - rclone
+    - resumable uploads
+    - file sharing
+    - torrent client settings
+    - labels
+    - speed limits
+    - file preview
+    - starred folders
+    - sync files
+    - encryption keys
+    - media indexers
+    - quality profiles
+    - advanced settings
+    - file operations
+    - compress archives
+    - create torrents
+    - add torrents
+    - share files
+    - download files
+    - upload files
+    - torrent details
+    - connection manager
+    - edit torrent
+    - search torrents
+    - torrent client dashboard
+    - bottom bar
+    - changelog
+    - global controls
+    - statistics
+
 toc_min_heading_level: 2
 toc_max_heading_level: 4
 ---

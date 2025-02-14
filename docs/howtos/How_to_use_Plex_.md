@@ -1,3 +1,17 @@
+---
+id: how-to-use-plex
+title: How to use Plex
+description: Learn how to install and use Plex Media Server on your seedbox to stream your personal media library. Follow our step-by-step guide for a seamless setup.
+keywords:
+    - Plex
+    - Plex Media Server
+    - seedbox
+    - media streaming
+    - home media center
+    - Plex installation
+    - streaming setup
+---
+
 # How to use Plex
 
 The **Plex Media Server** is a closed source project, that is intended as a **home media center**, in order to stream your personal library. 

@@ -1,3 +1,17 @@
+---
+id: how-to-use-jackett-with-sickchill
+title: How to use Jackett with Sickchill
+description: Learn how to integrate Jackett with Sickchill (Sickrage) for torrent scraping and automated downloads. Follow this step-by-step guide to set up and configure both applications on your seedbox.
+keywords:
+    - Jackett
+    - Sickchill
+    - Sickrage
+    - torrent scraping
+    - automated downloads
+    - seedbox
+    - installation guide
+---
+
 # How to use Jackett with Sickchill
 
 ## Introduction

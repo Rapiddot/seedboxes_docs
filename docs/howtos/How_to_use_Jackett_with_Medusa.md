@@ -1,3 +1,17 @@
+---
+id: how-to-use-jackett-with-medusa
+title: How to use Jackett with Medusa
+description: A comprehensive guide on how to integrate Jackett with Medusa for torrent scraping and automated downloads.
+keywords:
+    - Jackett
+    - Medusa
+    - torrent scraping
+    - automated downloads
+    - indexer
+    - NZB search
+    - custom search provider
+---
+
 # How to use Jackett with Medusa
 
 ## Introduction

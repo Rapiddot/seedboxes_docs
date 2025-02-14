@@ -1,3 +1,17 @@
+---
+id: connect-sonarr-radarr-plex-to-overseerr
+title: How to Connect Sonarr, Radarr, and Plex to Your Overseerr App
+description: Learn how to connect your Sonarr, Radarr, and Plex applications to your Overseerr app for seamless media management and discovery.
+keywords:
+    - Overseerr
+    - Sonarr
+    - Radarr
+    - Plex
+    - Media Management
+    - Seedboxes
+    - Installation Guide
+---
+
 # How to connect sonarr, radarr and plex to your overseer app
 
 ## Introduction

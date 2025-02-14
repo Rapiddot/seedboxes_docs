@@ -1,3 +1,15 @@
+---
+id: how-to-reroute-traffic
+title: How to Reroute Traffic Using Our Reroute Tool
+description: Learn how to reroute traffic through another carrier towards your IP using our speedtest and reroute tool to improve your connection speed.
+keywords:
+    - reroute traffic
+    - speedtest tool
+    - improve connection speed
+    - seedboxes.cc
+    - ISP peering
+---
+
 # How to reroute traffic using our reroute tool
 
 ## Why someone might need the reroute tool

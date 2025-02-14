@@ -1,3 +1,10 @@
+---
+title: "Service Agreement"
+id: "service-agreement"
+description: "This document outlines the service agreement between Seedboxes.cc and its clients, detailing the terms and conditions of service usage."
+keywords: ["service agreement", "Seedboxes.cc", "terms and conditions", "client agreement"]
+---
+
 # SERVICE AGREEMENT
 THIS AGREEMENT ("Agreement") is made and effective as of the date of acceptance, by and between you ("Client") and
 

@@ -1,3 +1,9 @@
+---
+title: "Are public trackers allowed?"
+id: "are-public-trackers-allowed"
+description: "Information on the use of public trackers with your seedbox."
+keywords: ["public trackers", "seedbox", "privacy", "download speeds"]
+---
 # Are public trackers allowed ?
 
 Public trackers are allowed but are definitely not recommended.

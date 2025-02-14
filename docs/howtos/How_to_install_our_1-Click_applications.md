@@ -1,3 +1,15 @@
+---
+id: how-to-install-1-click-applications
+title: How to Install Our 1-Click Applications
+description: Learn how to easily install our 1-click applications on your seedbox with this step-by-step guide.
+keywords:
+    - seedbox
+    - 1-click applications
+    - install applications
+    - seedboxes.cc
+    - manage seedbox
+---
+
 # How to install our 1-click applications
 
 1. Login to your [client area](https://seedboxes.cc/client/dashboard).

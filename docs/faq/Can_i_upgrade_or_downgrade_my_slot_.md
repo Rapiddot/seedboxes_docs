@@ -1,3 +1,14 @@
+---
+id: upgrade-downgrade-account
+title: Can I upgrade/downgrade my account?
+description: Learn how to upgrade or downgrade your slot without losing any files or settings.
+keywords:
+    - upgrade
+    - downgrade
+    - account
+    - slot
+    - billing
+---
 # Can i upgrade/downgrade my account ?
 
 You can upgrade or downgrade your slot at any moment, without losing any of your files or settings and without cancelling your current slot!

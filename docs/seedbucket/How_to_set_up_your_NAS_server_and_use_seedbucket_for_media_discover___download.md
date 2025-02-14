@@ -1,3 +1,11 @@
+---
+title: How to download directly to your NAS with Seedbucket
+id: how-to-download-directly-to-your-nas-with-seedbucket
+description: Learn how to set up your NAS server and use Seedbucket for media discovery and download.
+keywords: [NAS, Seedbucket, media download, FTPS, media indexers, libraries]
+---
+
+# How to download directly to your NAS with Seedbucket
 ## Introduction
 
 A personal NAS server is an alternate solution to stream media content locally.

@@ -1,3 +1,17 @@
+---
+id: how-to-use-sickrage-with-your-seedbox
+title: How to use Sickrage with your seedbox
+description: Learn how to use Sickrage (Sickchill) with your seedbox to automate downloading, renaming, and organizing your favorite TV shows.
+keywords:
+    - Sickrage
+    - Sickchill
+    - seedbox
+    - TV shows
+    - automation
+    - subtitles
+    - post-processing
+---
+
 # How to use Sickrage with your seedbox
 
 ## Introduction

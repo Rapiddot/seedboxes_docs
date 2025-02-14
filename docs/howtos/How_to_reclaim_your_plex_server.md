@@ -1,3 +1,17 @@
+---
+id: how-to-reclaim-your-plex-server
+title: How to Reclaim Your Plex Server
+description: Learn how to reclaim your Plex server without reinstalling the Plex app and losing your library paths. Follow these simple steps to regain access to your Plex server on your seedbox.
+keywords:
+    - plex server
+    - reclaim plex server
+    - seedbox
+    - plex.tv account
+    - plex claim code
+    - seedboxes
+    - SSH
+---
+
 # How to reclaim your plex server
 
 If for whatever reason your plex server is signed out of your plex.tv account and you no longer have access to your plex server, instead of re-installing the plex app (**which most probably will cause you to lose your previous library paths and a full rescan will be needed once you re-add them, amongst other things**), there is another, better and faster way (and without the above fuss in parenthesis). You just need to do the following in order to claim your plex server back ;

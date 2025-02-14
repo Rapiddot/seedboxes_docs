@@ -1,3 +1,14 @@
+---
+title: Renewal Process
+id: renewal-process
+description: Information about the renewal process for services, including invoice details, suspension, and termination policies.
+keywords:
+    - renewal
+    - invoice
+    - suspension
+    - termination
+    - payment
+---
 # Renewal Process
 
 10 days before your renewal due time, you will receive a new invoice for you to pay. The renewed service starts counting from the invoice due time, and not from the time you pay your invoice. So, if you pay your invoice 1 week before your account expires, you will not loose this 1 week.

@@ -1,3 +1,15 @@
+---
+title: Privacy Policy
+id: privacy-policy
+description: This document outlines the privacy policy for Seedboxes.cc, detailing the collection, use, and protection of personal information.
+keywords:
+    - privacy
+    - personal information
+    - data protection
+    - Seedboxes.cc
+    - privacy policy
+---
+# Privacy Policy
 ## Collection and Use of Personal Information
 ### We collect the following personal information from you:
 

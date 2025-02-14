@@ -1,3 +1,9 @@
+---
+title: Are Minecraft servers allowed on your slots
+id: are-minecraft-servers-allowed
+description: Information about the policy on running Minecraft servers on our slots.
+keywords: [Minecraft, servers, slots, policy, ddos]
+---
 # Are Minecraft servers allowed on your slots
 
 Minecraft servers are not allowed running on our slots. This also includes any other game server or application server that requires an increased amount of resources and has an increased risk of receiving ddos attacks.

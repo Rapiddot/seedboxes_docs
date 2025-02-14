@@ -1,3 +1,16 @@
+---
+id: how-to-create-and-use-rclone-remotes-in-your-seedbox
+title: How to create and use rclone remotes in your seedbox
+description: Learn how to create and use rclone remotes in your seedbox to move or copy files between your local seedbox and remote drives like Google Drive.
+keywords:
+    - rclone
+    - seedbox
+    - remote drives
+    - Google Drive
+    - file transfer
+    - cloud storage
+---
+
 # How to create and use rclone remotes in your seedbox
 
 ## Introduction

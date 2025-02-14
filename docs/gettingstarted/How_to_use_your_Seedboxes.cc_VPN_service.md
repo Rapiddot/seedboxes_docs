@@ -1,4 +1,6 @@
 ---
+id: how-to-use-your-VPN-service
+title: How to use your Seedboxes.cc VPN Service
 toc_min_heading_level: 2
 toc_max_heading_level: 4
 description: Learn how to set up and use the Seedboxes.cc VPN service with Wireguard for secure and anonymous internet browsing.

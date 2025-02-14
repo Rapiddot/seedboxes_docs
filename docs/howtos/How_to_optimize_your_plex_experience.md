@@ -1,3 +1,17 @@
+---
+id: optimize-plex-experience
+title: How to Optimize Your Plex Experience
+description: Learn how to optimize your Plex experience by configuring your Plex clients and settings for the best streaming performance.
+keywords:
+    - Plex
+    - Plex optimization
+    - Plex streaming
+    - Plex clients
+    - Plex Media Player
+    - 4K streaming
+    - media server
+---
+
 # How to optimize your plex experience
 
 ## Introduction
