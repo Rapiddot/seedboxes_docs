@@ -1,5 +1,6 @@
 ---
 title: How to use Seedbucket
+sidebar_position: 1
 id: how-to-use-seedbucket
 description: A comprehensive guide on how to use Seedbucket for managing your seedbox, including installation, dashboards, external storage drives, and more.
 keywords:

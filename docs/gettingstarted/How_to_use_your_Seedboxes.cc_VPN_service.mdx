@@ -6,6 +6,8 @@ toc_max_heading_level: 4
 description: Learn how to set up and use the Seedboxes.cc VPN service with Wireguard for secure and anonymous internet browsing.
 keywords: [VPN, Wireguard, Seedboxes.cc, anonymity, security, internet privacy, VPN configuration, secure browsing, online protection, Wireguard setup]
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # How to use your Seedboxes.cc VPN Service
 
@@ -20,21 +22,18 @@ Our VPN service is solely based on the popular [Wireguard](http://www.wireguard.
 Visit the official Wireguard site which you can find [here](https://www.wireguard.com/install/) .
 
 For faster reference, the links to download the app are as following;
-> [Windows](https://download.wireguard.com/windows-client/wireguard-installer.exe)
-> 
-> [MacOS (App Store)](https://itunes.apple.com/us/app/wireguard/id1451685025?ls=1&mt=12)
-> 
-> [Android (Play Store)](https://play.google.com/store/apps/details?id=com.wireguard.android)
-> 
-> [iOS (App Store)](https://itunes.apple.com/us/app/wireguard/id1441195209?ls=1&mt=8)
-> 
-> [Linux](https://www.wireguard.com/install/)
+
+<Button label="Windows" link="https://download.wireguard.com/windows-client/wireguard-installer.exe" icon="fa-brands fa-windows" />
+<Button label="MacOS" link="https://itunes.apple.com/us/app/wireguard/id1451685025?ls=1&mt=12" icon="fa-brands fa-apple" />
+<Button label="Android" link="https://play.google.com/store/apps/details?id=com.wireguard.android" icon="fa-brands fa-android" />
+<Button label="iOS" link="https://itunes.apple.com/us/app/wireguard/id1441195209?ls=1&mt=8" icon="fa-brands fa-apple" />
+<Button label="Linux" link="https://www.wireguard.com/install/" icon="fa-brands fa-linux" /><br /><br />
 
 Proceed to installing the Wireguard app as you would normally do with any other app
 
-!!!info Note
+:::note
 For Linux, depending on its distro, you might have to install some packages more. For instance, for Ubuntu, you need to also install resolvconf via "sudo apt install resolvconf".
-!!!
+:::
 
 
 ### Create connection
@@ -45,9 +44,9 @@ Just visit your seedbox at your client area, click the tab **"VPN"** and then th
 
 ![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648459423755.jpeg)
 
-!!!info Note
+:::note
 Depending on your seedbox tier, you can generate up to a certain number of Wireguard configurations to be used simultaneously. For the Bat Box tier, that number is 2 whereas for the Red Dragon tier, that number is 5.
-!!!
+:::
 
 At the new modal, name the connection to your liking (e.g. macbook) and click the **"Create VPN Connection"** button
 
@@ -135,9 +134,9 @@ A new modal will appear with the QR code revealed
 
 ![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648461338777.09.59.jpg)
 
-!!!info Note
+:::note
 The above QR code is invalid, it is only shown as a demonstration
-!!!
+:::
 
 Open the wireguard app from your tablet or mobile device and either click the **"+"** icon at the top right of your screen or click the **"Add a tunnel"** button
 
@@ -150,7 +149,9 @@ At the dropdown menu, click the **"Create from QR code"** link
 This will open your camera (make sure that you have given permissions for allowing the camera to be used) so you can scan the QR Code.
 You can name the tunnel to your liking (e.g. sbccvpn). After that, you need to allow it so your tablet /mobile can use the VPN connection you just set up.
 
-**NOTE:** Try to rename the config file to something that **does not contain spaces and special characters** (like "sbcc" as previously written) or the server location like "France" before importing it, as there is currently a bug with Wireguard and Android mobiles.
+:::note
+Try to rename the config file to something that **does not contain spaces and special characters** (like "sbcc" as previously written) or the server location like "France" before importing it, as there is currently a bug with Wireguard and Android mobiles.
+:::
 
 That was it, you can now easily enable it and connect to the VPN server at your convenience!
 

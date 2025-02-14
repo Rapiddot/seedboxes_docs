@@ -84,7 +84,7 @@ The cancellation button in your client area, will automatically cancel your serv
 
 Under the **VPN** tab you will find the options listed in the figure below:
 
-* **Download Configuration**: Here you can download the wireguard configuration for the [VPN service](./How_to_use_your_Seedboxes.cc_VPN_service.md).
+* **Download Configuration**: Here you can download the wireguard configuration for the [VPN service](./How_to_use_your_Seedboxes.cc_VPN_service.mdx).
 * **Delete**: Here you can delete the wireguard configuration in order to free a slot and create a new one.
 
 ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1687939424449.00.36.jpg)
@@ -122,7 +122,7 @@ Below, we will explain in more detail **step 3** for each of the available torre
 
 :::info Related Articles
 
-* [Which torrent client should I choose?](../howtos/Which_torrent_client_should_i_choose.md)
+* [Which torrent client should I choose?](../faq/Which_torrent_client_should_i_choose.md)
 * [Set your default torrent client](../howtos/Set_your_default_torrent_client.md)
 :::
 
@@ -239,5 +239,5 @@ Depending on the seedbox plan, you can use 2-5 different VPN connections simulta
 :::
 
 :::info Related Articles
-* [How to use your Seedboxes.cc VPN service](./How_to_use_your_Seedboxes.cc_VPN_service.md)
+* [How to use your Seedboxes.cc VPN service](./How_to_use_your_Seedboxes.cc_VPN_service.mdx)
 :::
