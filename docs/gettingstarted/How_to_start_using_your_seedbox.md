@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+description: Learn how to get started with your seedbox, manage your account, configure settings, and utilize torrent clients for downloading and seeding.
+keywords: [seedbox, torrenting, rTorrent, Deluge, Transmission, Qbittorrent, FTP, SFTP, SSH, VPN, file sharing, seedboxes.cc, client area, torrent client, web interface, download torrents, seedbox guide]
 ---
 # How to start using your seedbox
 

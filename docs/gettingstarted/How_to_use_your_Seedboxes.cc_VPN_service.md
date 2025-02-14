@@ -1,6 +1,8 @@
 ---
 toc_min_heading_level: 2
 toc_max_heading_level: 4
+description: Learn how to set up and use the Seedboxes.cc VPN service with Wireguard for secure and anonymous internet browsing.
+keywords: [VPN, Wireguard, Seedboxes.cc, anonymity, security, internet privacy, VPN configuration, secure browsing, online protection, Wireguard setup]
 ---
 
 # How to use your Seedboxes.cc VPN Service
