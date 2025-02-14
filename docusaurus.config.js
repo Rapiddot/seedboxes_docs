@@ -13,9 +13,17 @@ const config = {
   title: 'Seedboxes.cc Documentation',
   tagline: '',
   favicon: 'img/favicon.ico',
-
+  plugins: [
+    [
+        'docusaurus-biel',{
+            project: 'h40yh4nx5g',
+            headerTitle: 'Seedboxes.cc ChatBot',
+            version: 'latest'
+        }
+    ]
+  ],
   // Set the production url of your site here
-  url: 'https://docs.seedboxes.cc',
+  url: 'https://docs-staging.seedboxes.cc',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -52,7 +60,6 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
