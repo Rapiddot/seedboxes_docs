@@ -23,17 +23,12 @@ const config = {
     ]
   ],
   themes: [
-    [require.resolve("@easyops-cn/docusaurus-search-local"),({
-      // ... Your options.
-      // `hashed` is recommended as long-term-cache of index file is possible.
-      hashed: true,
-
-      // For Docs using Chinese, it is recomended to set:
-      // language: ["en", "zh"],
-
-      // If you're using `noIndex: true`, set `forceIgnoreNoIndex` to enable local index:
-      // forceIgnoreNoIndex: true,
-    }),]
+    [require.resolve("@easyops-cn/docusaurus-search-local"),{
+        indexBlog: false,
+        indexDocs: true,
+        docsRouteBasePath: "/",
+        hashed: true,
+    },]
   ],
   // Set the production url of your site here
   url: 'https://docs-staging.seedboxes.cc',
