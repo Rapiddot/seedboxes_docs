@@ -9,4 +9,6 @@ keywords: ["bandwidth", "speed limitations", "traffic quota", "upload traffic", 
 
 Each server comes with a 20Gbit dedicated line. This guarantees, that any user on the server will never be limited because of the activity of another user. There will never be a network bottleneck.
 
-Each plan has a monthly upload traffic quota. Download traffic is unmetered. When you go over your allowed upload traffic quota, the upload speed will be limited to 1-5Mbit, but you will not be charged extra for any additional upload traffic you generate.
+Have in mind that the 20gbit speed is refered to the total available network speed of the server, which is shared amond the users of that server. It is practically impossible for a single account to reach this speed, as no hard disk can read/write that fast. 
+
+So we merely state, that your only bottleneck and technical limitation will be the speed of your disk, and not the network activity of another user.

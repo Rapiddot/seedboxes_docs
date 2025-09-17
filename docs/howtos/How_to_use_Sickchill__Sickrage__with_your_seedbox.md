@@ -32,7 +32,7 @@ Click **Save changes** button and again, **Save changes** at the bottom left cor
 ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1559214520888.png)
 
 **NOTE**: The path `/home/user/files/Plex/TV` is being chosen so you can can implement at a future time the same folder for your plex server app too, should you choose to install it.
-Also, bear in mind that if the folder doesn't exist, you have to manually create it, either via your Seedbucket app (an excellent guide on how to use the app is [here](https://community.seedboxes.cc/articles/how-to-use-seedbucket)) or through SSH
+Also, bear in mind that if the folder doesn't exist, you have to manually create it, either via your Seedbucket app (an excellent guide on how to use the app is [here](../seedbucket/How_to_use_Seedbucket.md)) or through SSH
 
 3) Hover your mouse on the **gears** icon again, this time choosing **Search providers**.
 You will be automatically redifrected to the first tab **Provider Priorities**.

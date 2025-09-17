@@ -17,7 +17,6 @@ We currently support all major torrent client for our slots. Below we will menti
 ## Qbitorrent
 Currently our default torrent client, and one of the most popular ones, as it is supported in every operating system, it is actively maintained and offers all around the best performance with a nice native WebUI.
 
-
 ## Rtorrent (+rutorrent)
 Rtorrent is a very popular client, however it is not that actively maintained as it used to be. Nonetheless it is a very stable and performant torrent client. One of its drawbacks is that it does not have a native WebUI and relies on rutorrent (a php implementation) to provide one. This adds complexity to the installation and has performance drawbacks when handling many torrents. Furthermore, rutorrent, while still actively maintained, has quite a few bugs.
 

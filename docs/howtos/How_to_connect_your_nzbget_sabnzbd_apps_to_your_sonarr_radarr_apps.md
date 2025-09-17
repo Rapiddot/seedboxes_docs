@@ -49,7 +49,7 @@ At the next screen, you need to input your settings (URL, API key, Categories an
 
 #### - Setting usenet indexers via nzbhydra 2
 
-If you have multiple usenet subscriptions, the best way is to install **nzbhydra 2** app from your [client area](https://community.seedboxes.cc/articles/how-to-install-our-1-click-applications) and use it as a single indexer source. From their github:
+If you have multiple usenet subscriptions, the best way is to install **nzbhydra 2** app from your [client area](../howtos/How_to_install_our_1-Click_applications.md) and use it as a single indexer source. From their github:
 
 > *NZBHydra 2 is a meta search for NZB indexers. It provides easy access to a number of raw and newznab based indexers. You can search all your indexers from one place and use it as an indexer source for tools like Sonarr, Radarr or CouchPotato.*
 

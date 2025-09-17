@@ -33,7 +33,7 @@ Click **New**, and input (or navigate to) ;
 
 :::note
 The path `/home/user/files/Plex/TV` is being chosen so you can can implement at a future time the same folder for your plex server app too, should you choose to install it.
-Also, bear in mind that if the folder doesn't exist, you have to manually create it, either via your Seedbucket app (an excellent guide on how to use the app is [here](https://community.seedboxes.cc/articles/how-to-use-seedbucket)) or via FTP or SSH.
+Also, bear in mind that if the folder doesn't exist, you have to manually create it, either via your Seedbucket app (an excellent guide on how to use the app is [here](../seedbucket/How_to_use_Seedbucket.md)) or via FTP or SSH.
 :::
 
 Click **Save changes** button, scroll down and again, **Save changes** at the bottom left corner.

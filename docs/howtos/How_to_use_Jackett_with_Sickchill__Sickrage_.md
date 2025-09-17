@@ -22,7 +22,7 @@ From the official Jackett app github:
 In this guide, we will be using Jackett for scraping torrents into Sickchill (Sickrage) app
 
 ## Installation
-Go to your client area, click the **Installable Apps** section and add both applications via **+Add Application** button. You can find a more detailed guide regarding 1-click installation of the apps [here](https://community.seedboxes.cc/articles/how-to-install-our-1-click-applications)
+Go to your client area, click the **Installable Apps** section and add both applications via **+Add Application** button. You can find a more detailed guide regarding 1-click installation of the apps [here](../howtos/How_to_install_our_1-Click_applications.md)
 
 ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1558516564315.png)
 

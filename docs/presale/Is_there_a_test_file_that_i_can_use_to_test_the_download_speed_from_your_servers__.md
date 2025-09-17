@@ -10,9 +10,8 @@ keywords:
 ---
 # How can i test the speed from your servers ?
 
-If you want to test the peering of your ISP towards our servers and see what kind of download speed you can achieve, you can try to download the following test files:
+The best way to test the speed from our network to your home ISP is by using our [Seedboxes.cc Speedtest Page](https://speedtest.seedboxes.cc). 
 
-[10 MB file](http://mirror.i3d.net/10mb.bin)
-[100 MB file](http://mirror.i3d.net/100mb.bin)
-[1000 MB file](http://mirror.i3d.net/1000mb.bin)
-[10000 MB file](http://mirror.i3d.net/10000mb.bin)
+This is the page to use as well, in order to troubleshoot network speed issues. If you are logged in to the speedtest page, before you proceed with the speedtest, you will be presented with reroute options, in order to optimize the path to your ISP, thus increasing your speed from our network.
+
+We have full guide on the speedtest tool for this procedure [here](../howtos/How_to_reroute_traffic_through_another_carrier_towards_your_IP_by_using_our_speedtest_and_reroute_tool.md).

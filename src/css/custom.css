@@ -47,3 +47,5 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.n8n-chat-ui-bot-input-container { border: none !important; }

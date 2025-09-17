@@ -53,7 +53,7 @@ Don't close the window yet, as it will be needed later for the **API Key** and *
 
 ### **Sonarr**
 
-Assuming you have being already using the Sonarr app, this guide will only show how to add and use the custom indexer. However, if you are new here, there is an excellent [guide](https://community.seedboxes.cc/articles/how-to-setup-sonarr) regarding the installation and proper setting up of the app.
+Assuming you have being already using the Sonarr app, this guide will only show how to add and use the custom indexer.
 
 At the main page of Sonarr, click **Settings** icon and you will be redirected to the first tab (Media management)
 

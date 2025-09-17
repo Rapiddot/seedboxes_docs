@@ -25,5 +25,5 @@ In order to extract an ISO you need to do it via SSH. Just follow these easy ste
 That's it! Your ISO should now be inside the output directory you've specified.
 
 :::info
-Have in mind that you can only extra data .isos in this way. Bluray or DVD Video isos, have a copmletely different format and require special apps written for this purpose in order to be extracted.
+Have in mind that you can only extra data .isos in this way. Bluray or DVD Video isos, have a completely different format and require special apps written for this purpose in order to be extracted.
 :::

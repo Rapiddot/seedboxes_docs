@@ -29,13 +29,13 @@ You are now able to create a remote mount point for your **Google drive**,  **Dr
 **IMPORTANT: Have in mind that mounting your remote drive in your seedbox, requires the use of a local file cache (located in your seedbox) to speedup the performance of the mount and minimize the API calls to the Google drive API (to reduce the chance for you to hit limits that could result in a ban of your Google drive account).
 This cache can grow up to 200GB in storage in your account (depending on the frequency of reading/writing on the mount), so please bear in mind to have this space available in your seedbox before activating your mount**
 
-**ALSO IMPORTANT: AVOID setting your download clients (torrent client, sabnzbd / nzbget) to download DIRECTLY to your mount, as this will cause very slow network speeds, your apps/clients becoming unresponsive/inaccessible and most probably hitting an API limit / ban. The correct procedure is to download locally to your seedbox and set your paths at sonarr/radarr apps towards your mount, so only finalised content is uploaded. You can check for further details [here](https://community.seedboxes.cc/articles/how-to-use-sonarr-and-radarr-with-your-remote-mount)**
+**ALSO IMPORTANT: AVOID setting your download clients (torrent client, sabnzbd / nzbget) to download DIRECTLY to your mount, as this will cause very slow network speeds, your apps/clients becoming unresponsive/inaccessible and most probably hitting an API limit / ban. The correct procedure is to download locally to your seedbox and set your paths at sonarr/radarr apps towards your mount, so only finalised content is uploaded. You can check for further details [here](../howtos/How_to_use_sonarr_and_radarr_with_your_remote_mount.md)**
 
 ## Installation
 
 The installation process is done via our **Seedbucket** app and it is based on rclone functionality.
 **Note:** You need to have already added a Google drive, Dropbox or S3 to your seedbucket. If you also have a crypt drive (for that Google, Dropbox or S3 drive) with existing encrypted content or if you want to create a new crypt drive from scratch so that the mount point contains encrypted content from that moment and on, you need to do so **before** creating the rclone mount point.
-You can find more information regarding the encryption section in our seedbucket guide [here](https://community.seedboxes.cc/articles/how-to-use-seedbucket#encryption) .
+You can find more information regarding the encryption section in our seedbucket guide [here](../seedbucket/How_to_use_Seedbucket.md#encryption) .
 
 Just head to your **Settings -> Apps** section. To do so, click at the top right corner your email address and at the dropdown menu, click the **"Settings"** link.
 

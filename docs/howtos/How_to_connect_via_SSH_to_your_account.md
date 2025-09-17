@@ -13,6 +13,9 @@ keywords:
 ---
 
 # How to connect via SSH to your account
+:::info
+This is a guide on how to connect via SSH to your account directly from your pc. You can also do this from your browser by following this ![guide](../howtos/How_to_connect_remotely_to_your_seedbox_via_the_web_browser.md)
+:::
 
 ## Windows Users
 ### SSH to your account with Putty
@@ -43,3 +46,4 @@ Openssh is builtin in Linux and Mac operating systems, so all you have to do in 
 
 1. You will be asked for your password. Enter your seedbox password. Please note that when you enter the password, you will see nothing being typed. This is normal and it is a security precaution.
 1. If you entered your details correctly, you will be greeted with a welcome message and your account shell ready to accept any commands.
+

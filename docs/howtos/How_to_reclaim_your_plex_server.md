@@ -19,7 +19,7 @@ If for whatever reason your plex server is signed out of your plex.tv account an
 1) Connect to your seedbox via SSH.
 You can also easily do so from your web browser too, without the need to remember ports etc. Just visit [https://remote.seedboxes.cc/](https://remote.seedboxes.cc/) from your favourite browser and enter your **client area email** and **password** (like you do with seedbucket).
 
-You can also check our guide for that [here](https://community.seedboxes.cc/articles/how-to-connect-remotely-to-your-seedbox-via-the-web-browser)
+You can also check our guide for that [here](../howtos/How_to_connect_remotely_to_your_seedbox_via_the_web_browser.md)
 
 Once you input your credentials, select the seedbox from the list (if you have multiple seedboxes) that you wish to reclaim the plex server. You will automatically connect via SSH to that seedbox and the terminal will appear
 

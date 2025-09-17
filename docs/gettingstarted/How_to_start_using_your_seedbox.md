@@ -68,7 +68,7 @@ Under the **Seedbox** tab you will find the options listed in the figure below:
 
 * **Login Information**: The username and password of your seedbox. From here you can also [change your seedbox password](../howtos/How_to_change_your_seedbox_password.md) if required.
 * **Torrent Client WebUI**: Change your default torrent client. Please note that you can only use one **(1)** torrent client at a time.
-* **Seedbucket**: This is an advanced -yet extremely easy to use- file manager for your seedbox with an integrated torrent client (rutorrent v3/v4, deluge v1/v2, transmission and qbittorrent supported). You can check our detailed guide [here](https://community.seedboxes.cc/articles/how-to-use-seedbucket).
+* **Seedbucket**: This is an advanced -yet extremely easy to use- file manager for your seedbox with an integrated torrent client (rutorrent v3/v4, deluge v1/v2, transmission and qbittorrent supported). You can check our detailed guide [here](../seedbucket/How_to_use_Seedbucket.md).
 * **FTP/SFTP Access**: Here you will find all the information for you to establish an FTP or an SFTP connection with your seedbox. By clicking the **Filezilla Configuration** button you will download an automatically generated configuration file for you in order to import to your [Filezilla FTP client and connect to your seedbox via FTP](../howtos/How_to_connect_via_FTP_to_your_account_using_FileZilla.md).
 * **SSH Access**: Provides you the information for an SSH connection with your seedbox. 
 * **Promo codes**: If you have any promo codes, enter them at the field and click the corresponding button
@@ -209,7 +209,7 @@ In order to interact with your seedbox you can do it via [SSH (Secure Shell)](ht
 
 **Related articles:**
 
-* [How to connect via SSH to your account](https://support.seedboxes.cc/questions/128158-how-to-connect-via-ssh-to-your-account)
+* [How to connect via SSH to your account](../howtos/How_to_connect_via_SSH_to_your_account.md)
 
 **Recommended SSH clients:**
 
