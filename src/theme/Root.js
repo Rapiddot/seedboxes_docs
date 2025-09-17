@@ -1,19 +1,15 @@
-// src/theme/Root.js
 import React, { useEffect, useRef } from "react";
-// @ts-ignore
-import Chatbot from "@site/static/js/n8n-embed.js";
 
 export default function Root({ children }) {
   const ChatbotRef = useRef(null);
   const currentModeRef = useRef("light");
-  const observerRef = useRef(null);
+  const observerRef = useRef<MutationObserver | null>(null);
 
-  // --- palettes aligned with your custom.css ---
   const buildTheme = (mode) => {
     const isDark = mode === "dark";
     return {
       button: {
-        backgroundColor: isDark ? "#f6bb42" : "#f6bb42",
+        backgroundColor: "#f6bb42",
         right: 40,
         bottom: 40,
         size: 60,
@@ -67,7 +63,7 @@ export default function Root({ children }) {
           placeholder: "Type your query",
           backgroundColor: isDark ? "#2b2b2b" : "#ffffff",
           textColor: isDark ? "#cccccc" : "#2c2c2c",
-          sendButtonColor: isDark ? "#f6bb42" : "#f6bb42",
+          sendButtonColor: "#f6bb42",
           maxChars: 500,
           maxCharsWarningMessage:
             "You exceeded the characters limit. Please input less than 50 characters.",
@@ -88,10 +84,10 @@ export default function Root({ children }) {
             "To record audio, use modern browsers like Chrome or Firefox that support audio recording",
         },
         footer: {
-            company: "Seedboxes.cc",
-            companyLink: "https://www.seedboxes.cc",
-            text: "Powered by",
-            textColor: isDark ? "#ffffff" : "#2c2c2c",
+          company: "Seedboxes.cc",
+          companyLink: "https://www.seedboxes.cc",
+          text: "Powered by",
+          textColor: isDark ? "#ffffff" : "#2c2c2c",
         },
       },
     };
@@ -109,66 +105,60 @@ export default function Root({ children }) {
     );
   };
 
-  const initChat = async (mode) => {
-    const theme = buildTheme(mode);
-
-    if (!ChatbotRef.current) {
-      const mod = Chatbot;
-      ChatbotRef.current = mod.default || mod;
-    }
-
-    // Prefer official destroy/update if available
-    if (window.n8nChatUI?.destroy) {
-      try {
-        window.n8nChatUI.destroy();
-      } catch {}
-    } else {
-      hardRemoveExistingWidget();
-    }
-
-    ChatbotRef.current.init({
-      n8nChatUrl:
-        "https://n8n.rapiddot.com/webhook/df5359c0-5a3e-43e8-8f66-409858dc3988/chat",
-      metadata: {},
-      theme,
-      onReady: (api) => {
-        window.n8nChatUI = api;
-      },
-    });
-  };
-
   const getHtmlMode = () =>
-    document.documentElement.getAttribute("data-theme") === "dark"
-      ? "dark"
-      : "light";
+    document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // init with current mode
-    const initialMode = getHtmlMode();
-    currentModeRef.current = initialMode;
-    initChat(initialMode);
+    // Dynamically import the self-hosted script from /static
+    (async () => {
+      // Files in /static are served at site root, so /js/n8n-embed.js
+      const mod = await import(/* webpackIgnore: true */ "/js/n8n-embed.js");
+      ChatbotRef.current = mod.default || mod;
 
-    // watch for theme changes
-    observerRef.current = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        if (
-          m.type === "attributes" &&
-          m.attributeName === "data-theme"
-        ) {
-          const newMode = getHtmlMode();
-          if (newMode !== currentModeRef.current) {
-            currentModeRef.current = newMode;
-            initChat(newMode);
+      const initChat = async (mode) => {
+        const theme = buildTheme(mode);
+
+        if (window.n8nChatUI?.destroy) {
+          try {
+            window.n8nChatUI.destroy();
+          } catch {}
+        } else {
+          hardRemoveExistingWidget();
+        }
+
+        ChatbotRef.current.init({
+          n8nChatUrl:
+            "https://n8n.rapiddot.com/webhook/df5359c0-5a3e-43e8-8f66-409858dc3988/chat",
+          metadata: {},
+          theme,
+          onReady: (api) => (window.n8nChatUI = api),
+        });
+      };
+
+      // Initial load
+      const initialMode = getHtmlMode();
+      currentModeRef.current = initialMode;
+      await initChat(initialMode);
+
+      // Watch for theme changes
+      observerRef.current = new MutationObserver(async (mutations) => {
+        for (const m of mutations) {
+          if (m.type === "attributes" && m.attributeName === "data-theme") {
+            const newMode = getHtmlMode();
+            if (newMode !== currentModeRef.current) {
+              currentModeRef.current = newMode;
+              await initChat(newMode);
+            }
           }
         }
-      }
-    });
-    observerRef.current.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
+      });
+      observerRef.current.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+      });
+    })();
 
     return () => {
       observerRef.current?.disconnect();
@@ -180,7 +170,6 @@ export default function Root({ children }) {
         hardRemoveExistingWidget();
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <>{children}</>;
