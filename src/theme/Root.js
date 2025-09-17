@@ -1,5 +1,7 @@
 // src/theme/Root.js
 import React, { useEffect, useRef } from "react";
+// @ts-ignore
+import Chatbot from "@site/static/js/n8n-embed.js";
 
 export default function Root({ children }) {
   const ChatbotRef = useRef(null);
@@ -111,7 +113,7 @@ export default function Root({ children }) {
     const theme = buildTheme(mode);
 
     if (!ChatbotRef.current) {
-      const mod = await import("https://cdn.n8nchatui.com/v1/pole-embed-yard.js");
+      const mod = Chatbot;
       ChatbotRef.current = mod.default || mod;
     }
 

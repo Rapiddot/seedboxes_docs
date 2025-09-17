@@ -19,7 +19,9 @@ keywords:
 
 There are several ways to connect to your seedbox, like [FTP](../howtos/How_to_connect_via_FTP_to_your_account_using_FileZilla.md), SFTP, [SSH](../howtos/How_to_connect_via_SSH_to_your_account.md) or via our own app, [seedbucket](../seedbucket/How_to_use_Seedbucket.md). 
 
-**Note:** If you want to see hidden files and folders, then SFTP (with the use of an SFTP client) or SSH (via a terminal console) are the only ways to do so.
+:::info
+If you want to see hidden files and folders, then SFTP (with the use of an SFTP client) or SSH (via a terminal console) are the only ways to do so.
+:::
 
 We have now implemented another, very easy way to connect remotely to your seedbox, by using your favourite browser - no extra applications or terminals or remembering ports etc. It is essentially a remote SSH session, so you can see hidden files and folders too
 
