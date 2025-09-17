@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 export default function Root({ children }) {
   const ChatbotRef = useRef(null);
   const currentModeRef = useRef("light");
-  const observerRef = useRef<MutationObserver | null>(null);
+  const observerRef = useRef(null);
 
   const buildTheme = (mode) => {
     const isDark = mode === "dark";
@@ -109,11 +109,11 @@ export default function Root({ children }) {
     document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    // absolute guard: do nothing on SSR
+    if (typeof window === "undefined" || typeof document === "undefined") return;
 
-    // Dynamically import the self-hosted script from /static
     (async () => {
-      // Files in /static are served at site root, so /js/n8n-embed.js
+      // load self-hosted script at runtime only
       const mod = await import(/* webpackIgnore: true */ "/js/n8n-embed.js");
       ChatbotRef.current = mod.default || mod;
 
@@ -137,37 +137,43 @@ export default function Root({ children }) {
         });
       };
 
-      // Initial load
+      // initial render
       const initialMode = getHtmlMode();
       currentModeRef.current = initialMode;
       await initChat(initialMode);
 
-      // Watch for theme changes
-      observerRef.current = new MutationObserver(async (mutations) => {
-        for (const m of mutations) {
-          if (m.type === "attributes" && m.attributeName === "data-theme") {
-            const newMode = getHtmlMode();
-            if (newMode !== currentModeRef.current) {
-              currentModeRef.current = newMode;
-              await initChat(newMode);
+      // safely access MutationObserver via window
+      const MO = window.MutationObserver;
+      if (MO) {
+        const obs = new MO((mutations) => {
+          for (const m of mutations) {
+            if (m.type === "attributes" && m.attributeName === "data-theme") {
+              const newMode = getHtmlMode();
+              if (newMode !== currentModeRef.current) {
+                currentModeRef.current = newMode;
+                initChat(newMode);
+              }
             }
           }
-        }
-      });
-      observerRef.current.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
+        });
+        observerRef.current = obs;
+        obs.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
+      }
     })();
 
     return () => {
-      observerRef.current?.disconnect();
-      if (window.n8nChatUI?.destroy) {
-        try {
-          window.n8nChatUI.destroy();
-        } catch {}
-      } else {
-        hardRemoveExistingWidget();
+      observerRef.current?.disconnect?.();
+      if (typeof window !== "undefined") {
+        if (window.n8nChatUI?.destroy) {
+          try {
+            window.n8nChatUI.destroy();
+          } catch {}
+        } else {
+          hardRemoveExistingWidget();
+        }
       }
     };
   }, []);

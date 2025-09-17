@@ -33,7 +33,7 @@ Just make sure to **ENABLE TLS/SSL ENCRYPTION (also known as FTPS)**, in order t
 
 ### Add FTP drive to seedbucket
 
-The second step is to add the NAS server via FTP to your seedbucket dashboard. You can check our guide for that [here](../seedbucket/How_to_use_Seedbucket#ftp).
+The second step is to add the NAS server via FTP to your seedbucket dashboard. You can check our guide for that [here](../seedbucket/How_to_use_Seedbucket.md#ftp).
 Make sure to enable (toggle) the **Secure** and **Use authentication** buttons for encryption and inputting your credentials (host / port / username / password) at the necessary fields, according to that guide.
 
 ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1716207282372.14.28.jpg)
@@ -61,7 +61,7 @@ So the safe bet is to always use a public indexer, that is widely known too (e.g
 
 **Note**: For the time being, indexers are used sequentially (meaning in added order). If the first indexer can't find the data, it automatically moves to the second etc. It is in our TODO list to easily change the indexer order via dragging them to the top/bottom, just stay tuned for the next seedbucket version coming soon!
 
-**Note2**: You can also see that certain quality profiles are already pre-created for you and they should cover any quality needs you have. Feel free to check the relevant [section](../seedbucket/How_to_use_Seedbucket#quality-profiles) at our seedbucket guide for that, in case you want to make any adjustments
+**Note2**: You can also see that certain quality profiles are already pre-created for you and they should cover any quality needs you have. Feel free to check the relevant [section](../seedbucket/How_to_use_Seedbucket.md#quality-profiles) at our seedbucket guide for that, in case you want to make any adjustments
 
 ### Add Libraries
 

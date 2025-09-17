@@ -113,7 +113,7 @@ Once you authorize the drive, the "Select drive" modal will appear with all team
 
 ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1643470601598.PNG)
 
-Afterwards, the dashboard modal will ask you to select the home folder. Just scroll down [here](../seedbucket/How_to_use_Seedbucket#adding-your-connected-drives-to-your-dashboard)
+Afterwards, the dashboard modal will ask you to select the home folder. Just scroll down [here](../seedbucket/How_to_use_Seedbucket.md#adding-your-connected-drives-to-your-dashboard)
 
 #### **Dropbox**
 Adding Dropbox to your file manager is also an option. We support both personal and business (team) accounts
