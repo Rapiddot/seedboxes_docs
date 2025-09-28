@@ -262,6 +262,14 @@ def delete_by_urls(index_name: str, urls: List[str], namespace: str = ""):
         log.info(f"Deleting {len(subset)} url(s) from index…")
         index.delete(filter={"url": {"$in": subset}}, namespace=namespace or None)
 
+
+def delete_all_vectors(index_name: str, namespace: str = ""):
+    """Remove every vector from the target index (optionally scoped to a namespace)."""
+    index = pc.Index(index_name)
+    ns_display = namespace or "<default>"
+    log.info(f"Deleting all vectors from index '{index_name}' namespace '{ns_display}'…")
+    index.delete(delete_all=True, namespace=namespace or None)
+
 def extract_title(html: str) -> str:
     try:
         soup = BeautifulSoup(html, "lxml")
@@ -430,10 +438,11 @@ def main(sitemap_url: str,
          batch_size: int = 32,
          sleep_s: float = 0.0,
          use_tiktoken: bool = True,
-         min_chars: int = 200,
+         min_chars: int = 20,
          exclude_patterns: Optional[List[str]] = None,
          namespace: str = "",
-         store_text: bool = False,
+         clean_import: bool = False,
+         store_text: bool = True,
          preview_chars: int = 3000,
          state_dir: Optional[str] = None):
     log.info(f"Parsing sitemap: {sitemap_url}")
@@ -470,13 +479,19 @@ def main(sitemap_url: str,
             if not last_run_time:
                 log.info("Last run timestamp missing; reindexing all eligible URLs.")
 
+    if clean_import:
+        if previous_entries or last_run_time:
+            log.info("Clean import requested; ignoring saved state to reindex every URL.")
+        previous_entries = []
+        last_run_time = None
+
     # Exclude patterns -> split into kept/excluded
     kept_entries, excluded_entries = apply_excludes(all_entries, exclude_patterns or [])
     log.info(f"{len(kept_entries)} URL(s) remain after excludes")
 
     # Detect removals before applying lastmod filter or limit
     vanished_urls: List[str] = []
-    if previous_entries:
+    if previous_entries and not clean_import:
         prev_urls = {entry["url"] for entry in previous_entries}
         current_urls = {entry["url"] for entry in all_entries}
         vanished_urls = sorted(prev_urls - current_urls)
@@ -515,16 +530,19 @@ def main(sitemap_url: str,
 
     ensure_index(PINECONE_INDEX)
 
-    # Delete URLs that vanished from the sitemap since last run
-    if vanished_urls:
-        log.info(f"Deleting {len(vanished_urls)} URL(s) vanished from sitemap since last run…")
-        delete_by_urls(PINECONE_INDEX, vanished_urls, namespace=namespace)
+    if clean_import:
+        delete_all_vectors(PINECONE_INDEX, namespace=namespace)
+    else:
+        # Delete URLs that vanished from the sitemap since last run
+        if vanished_urls:
+            log.info(f"Deleting {len(vanished_urls)} URL(s) vanished from sitemap since last run…")
+            delete_by_urls(PINECONE_INDEX, vanished_urls, namespace=namespace)
 
-    # Delete URLs matching current exclude patterns
-    if excluded_entries:
-        excluded_urls = [entry["url"] for entry in excluded_entries]
-        log.info(f"Deleting {len(excluded_urls)} URL(s) due to exclude patterns…")
-        delete_by_urls(PINECONE_INDEX, excluded_urls, namespace=namespace)
+        # Delete URLs matching current exclude patterns
+        if excluded_entries:
+            excluded_urls = [entry["url"] for entry in excluded_entries]
+            log.info(f"Deleting {len(excluded_urls)} URL(s) due to exclude patterns…")
+            delete_by_urls(PINECONE_INDEX, excluded_urls, namespace=namespace)
 
     if not entries_to_process:
         log.info("No URLs require indexing after lastmod filter. Updating state only.")
@@ -619,7 +637,12 @@ if __name__ == "__main__":
     ap.add_argument("--exclude", action="append", default=[], help="Regex to exclude URLs (can be repeated)")
     ap.add_argument("--state-dir", help="Directory to persist last run timestamp and sitemap snapshot")
     ap.add_argument("--namespace", default=os.environ.get("PINECONE_NAMESPACE", ""), help="Pinecone namespace (optional)")
-    ap.add_argument("--store-text", action="store_true", help="Store chunk text in Pinecone metadata for reranking")
+    ap.add_argument("--clean-import", action="store_true",
+                    help="Clear the target Pinecone namespace and reindex every URL from the sitemap")
+    ap.add_argument("--store-text", dest="store_text", action="store_true", default=True,
+                    help="Store chunk text in Pinecone metadata for reranking (default: enabled)")
+    ap.add_argument("--no-store-text", dest="store_text", action="store_false",
+                    help="Disable storing chunk text in Pinecone metadata")
     ap.add_argument("--preview-chars", type=int, default=3000, help="Max chars of chunk text to store in metadata")
     ap.add_argument("--verbose", action="store_true", help="Verbose logging")
     ap.add_argument("--log-file", help="Write logs to this file")
@@ -640,6 +663,7 @@ if __name__ == "__main__":
             min_chars=args.min_chars,
             exclude_patterns=args.exclude,
             namespace=args.namespace,
+            clean_import=args.clean_import,
             store_text=args.store_text,
             preview_chars=args.preview_chars,
             state_dir=args.state_dir,
