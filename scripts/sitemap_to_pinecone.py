@@ -30,15 +30,27 @@ from pinecone import Pinecone, ServerlessSpec
 
 load_dotenv()
 
+
+def _read_env(name: str, default: Optional[str] = None, required: bool = False) -> str:
+    value = os.environ.get(name)
+    if value is not None:
+        value = value.strip()
+    if not value:
+        if required and default is None:
+            raise RuntimeError(f"Environment variable {name} is required but missing or empty")
+        return default or ""
+    return value
+
+
 # -------------------- Config via env --------------------
-PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY", "")
-PINECONE_INDEX   = os.environ.get("PINECONE_INDEX", "sbcc-docs")
-PINECONE_CLOUD   = os.environ.get("PINECONE_CLOUD", "aws")
-PINECONE_REGION  = os.environ.get("PINECONE_REGION", "us-east-1")
-OPENAI_API_KEY   = os.environ.get("OPENAI_API_KEY", "")
-EMBED_MODEL      = os.environ.get("EMBED_MODEL", "text-embedding-3-large")
-PINECONE_NAMESPACE = os.environ.get("PINECONE_NAMESPACE", "")  # optional
-MAX_EXTRACT_CHARS = int(os.environ.get("MAX_EXTRACT_CHARS", "400000"))      # per-page cap
+PINECONE_API_KEY = _read_env("PINECONE_API_KEY", required=True)
+PINECONE_INDEX   = _read_env("PINECONE_INDEX", default="sbcc-docs")
+PINECONE_CLOUD   = _read_env("PINECONE_CLOUD", default="aws")
+PINECONE_REGION  = _read_env("PINECONE_REGION", default="us-east-1")
+OPENAI_API_KEY   = _read_env("OPENAI_API_KEY", required=True)
+EMBED_MODEL      = _read_env("EMBED_MODEL", default="text-embedding-3-large")
+PINECONE_NAMESPACE = _read_env("PINECONE_NAMESPACE", default="")  # optional
+MAX_EXTRACT_CHARS = int(_read_env("MAX_EXTRACT_CHARS", default="400000"))      # per-page cap
 
 # ------------- optional tiktoken (lazy) -------------
 _TIKTOKEN_ENCODER = None
@@ -634,4 +646,3 @@ if __name__ == "__main__":
         )
     except KeyboardInterrupt:
         log.warning("Interrupted by user")
-
