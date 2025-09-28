@@ -42,13 +42,58 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq
 
-      # ⬇️ Bring back previous run's state (if any)
-      - name: Download pinecone-state artifact
+      # 🔎 Find the previous successful run of THIS workflow on main
+      - name: Find previous successful run id
+        id: prev
+        shell: bash
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          CUR_RUN_NUMBER: ${{ github.run_number }}
+        run: |
+          set -euo pipefail
+          # Use the workflow file name to query runs
+          WF_FILE=".github/workflows/index-after-pages.yml"
+          API="https://api.github.com/repos/${GH_REPO}/actions/workflows/$(basename "$WF_FILE")/runs?branch=main&status=success&per_page=50"
+          resp="$(curl -fsSL -H "Authorization: Bearer ${GH_TOKEN}" "$API")"
+
+          # Pick the latest successful run with run_number < current
+          prev_run_id=$(echo "$resp" \
+            | jq -r --argjson cur "${CUR_RUN_NUMBER}" '
+                .workflow_runs
+                | map(select(.run_number < $cur))
+                | sort_by(.run_number) | last // empty
+                | .id // empty')
+
+          if [[ -n "$prev_run_id" && "$prev_run_id" != "null" ]]; then
+            echo "Previous run id: $prev_run_id"
+            echo "run_id=$prev_run_id" >> "$GITHUB_OUTPUT"
+          else
+            echo "No previous successful run found."
+            echo "run_id=" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ⬇️ Download pinecone-state from that previous run (if it exists)
+      - name: Download pinecone-state artifact from previous run
+        if: steps.prev.outputs.run_id != ''
         uses: actions/download-artifact@v4
         with:
           name: pinecone-state
           path: pinecone-state
-        continue-on-error: true
+          run-id: ${{ steps.prev.outputs.run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # if your repo has a requirements.txt, install it:
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Wait for Cloudflare Pages to deploy this commit
         shell: bash
@@ -101,18 +146,6 @@ jobs:
             echo "Timed out waiting for Cloudflare Pages to deploy commit ${GIT_SHA}"
             exit 1
           fi
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # if your repo has a requirements.txt, install it:
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # 👉 Run the script with the persisted state dir
       - name: Run sitemap_to_pinecone.py (stateful)
