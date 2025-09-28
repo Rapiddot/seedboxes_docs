@@ -14,7 +14,7 @@ keywords:
 
 # How to reclaim your plex server
 
-If for whatever reason your plex server is signed out of your plex.tv account and you no longer have access to your plex server, instead of re-installing the plex app (**which most probably will cause you to lose your previous library paths and a full rescan will be needed once you re-add them, amongst other things**), there is another, better and faster way (and without the above fuss in parenthesis). You just need to do the following in order to claim your plex server back:
+If for whatever reason your plex server is signed out of your plex.tv account and you no longer have access to your plex server, instead of re-installing the plex app (**which most probably will cause you to lose your previous library paths and a full rescan will be needed once you re-add them, amongst other things**), there is another, better and faster way. You have 2 options. You can fix this either by using our Discord Bot (Option A) or manually if you SSH into your seedbox (Option B).
 
 ## Option A - Use our Discord channel's Bot
 
@@ -31,6 +31,7 @@ You can get a new claim code, from the plex.tv website here -> [https://www.plex
 :::
 
 ## Option B - Use the SSH access of your seedbox
+If you don't want to use the Discord command above, you can do this with a script we have prepared inside your Seedbox's SSH terminal:
 
 1) Connect to your seedbox via SSH.
 You can also easily do so from your web browser too, without the need to remember ports etc. Just visit [https://remote.seedboxes.cc/](https://remote.seedboxes.cc/) from your favourite browser and enter your **client area email** and **password** (like you do with seedbucket).
