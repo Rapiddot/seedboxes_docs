@@ -14,7 +14,23 @@ keywords:
 
 # How to reclaim your plex server
 
-If for whatever reason your plex server is signed out of your plex.tv account and you no longer have access to your plex server, instead of re-installing the plex app (**which most probably will cause you to lose your previous library paths and a full rescan will be needed once you re-add them, amongst other things**), there is another, better and faster way (and without the above fuss in parenthesis). You just need to do the following in order to claim your plex server back ;
+If for whatever reason your plex server is signed out of your plex.tv account and you no longer have access to your plex server, instead of re-installing the plex app (**which most probably will cause you to lose your previous library paths and a full rescan will be needed once you re-add them, amongst other things**), there is another, better and faster way (and without the above fuss in parenthesis). You just need to do the following in order to claim your plex server back:
+
+## Option A - Use our Discord channel's Bot
+
+The easiest way would be to do it from within our Discord Channel. If you are not already using our Discord channel, you can find instructions on how to connect to our Discord Channel and link your Discord account with your Seedboxes.cc account [here](../gettingstarted/Getting_started_with_Discord.md).
+
+One you are in our discord channel, just use the following command to reclaim your plex server:
+
+`/seedbox reclaim_plex <username> <plex_claim_code>`
+
+where `<username>` is your seedbox username
+
+:::info
+You can get a new claim code, from the plex.tv website here -> [https://www.plex.tv/claim/](https://www.plex.tv/claim/)
+:::
+
+## Option B - Use the SSH access of your seedbox
 
 1) Connect to your seedbox via SSH.
 You can also easily do so from your web browser too, without the need to remember ports etc. Just visit [https://remote.seedboxes.cc/](https://remote.seedboxes.cc/) from your favourite browser and enter your **client area email** and **password** (like you do with seedbucket).
