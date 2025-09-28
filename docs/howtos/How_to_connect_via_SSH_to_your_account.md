@@ -14,7 +14,7 @@ keywords:
 
 # How to connect via SSH to your account
 :::info
-This is a guide on how to connect via SSH to your account directly from your pc. You can also do this from your browser by following this ![guide](../howtos/How_to_connect_remotely_to_your_seedbox_via_the_web_browser.md)
+This is a guide on how to connect via SSH to your account directly from your pc. You can also do this from your browser by following this [guide](../howtos/How_to_connect_remotely_to_your_seedbox_via_the_web_browser.md)
 :::
 
 ## Windows Users
