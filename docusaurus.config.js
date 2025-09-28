@@ -58,6 +58,16 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+        lastmod: 'datetime',               // use <lastmod> with time
+        ignorePatterns: ['/', '/category/**', '/search'], // ignore front page and category pages
+        filename: 'sitemap.xml',
+        // optional extra safety (keeps anything with '/page/' out, for example):
+        // createSitemapItems: async ({defaultCreateSitemapItems, ...rest}) => {
+        //   const items = await defaultCreateSitemapItems(rest);
+        //   return items.filter((i) => !i.url.includes('/page/'));
+        // },
+        },
       }),
     ],
   ],
@@ -76,53 +86,7 @@ const config = {
           src: 'img/logo.svg',
           srcDark: 'img/logo_dark.svg',
         },
-        // items: [
-        //   {
-        //     type: 'docSidebar',
-        //     sidebarId: 'tutorialSidebar',
-        //     position: 'left',
-        //     label: 'Tutorial',
-        //   },
-        //   {to: 'https://blog.seedboxes.cc', label: 'Blog', position: 'left'},
-        //   {
-        //     href: 'https://github.com/facebook/docusaurus',
-        //     label: 'GitHub',
-        //     position: 'right',
-        //   },
-        // ],
       },
-      // footer: {
-      //   style: 'dark',
-      //   links: [
-      //     {
-      //       title: 'Docs',
-      //       items: [
-      //         {
-      //           label: 'Documentation Intro',
-      //           to: '/',
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       title: 'Community',
-      //       items: [
-      //         {
-      //           label: 'Stack Overflow',
-      //           href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-      //         },
-      //         {
-      //           label: 'Discord',
-      //           href: 'https://discordapp.com/invite/docusaurus',
-      //         },
-      //         {
-      //           label: 'X',
-      //           href: 'https://x.com/docusaurus',
-      //         },
-      //       ],
-      //     },
-      //   ],
-      //   copyright: `Copyright © ${new Date().getFullYear()} Seedboxes.cc`,
-      // },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
