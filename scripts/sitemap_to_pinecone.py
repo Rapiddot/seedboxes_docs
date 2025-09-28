@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import os
 import re
-import json
 import time
 import hashlib
 import logging
 import traceback
 import sys
-from typing import List, Dict, Optional, Set
+from datetime import datetime, timezone
+from typing import List, Dict, Optional
 from urllib.parse import urlparse
 
 # Keep native libs from over-parallelizing on small VMs
@@ -19,8 +19,8 @@ import requests
 from bs4 import BeautifulSoup
 import trafilatura
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-from tqdm import tqdm
 from dotenv import load_dotenv
+import xml.etree.ElementTree as ET
 
 # OpenAI v1 SDK
 from openai import OpenAI
@@ -76,35 +76,43 @@ def http_get(url: str, timeout=20) -> requests.Response:
     resp.raise_for_status()
     return resp
 
+SitemapEntry = Dict[str, Optional[str]]  # keys: url, lastmod
+
+
 # -------------------- Sitemap --------------------
-def parse_sitemap(url: str) -> List[str]:
-    """Recursively parse sitemap and return list of page URLs."""
+def parse_sitemap(url: str) -> List[SitemapEntry]:
+    """Recursively parse sitemap and return list of (url, lastmod) pairs."""
     r = http_get(url)
     soup = BeautifulSoup(r.content, "xml")
-    urls: List[str] = []
+    entries: List[SitemapEntry] = []
 
     # <sitemapindex> case
     sitemapindex = soup.find("sitemapindex")
     if sitemapindex:
         for sm_loc in sitemapindex.find_all("loc"):
+            if not sm_loc.text:
+                continue
             child = sm_loc.text.strip()
-            urls.extend(parse_sitemap(child))
-        return urls
+            if not child:
+                continue
+            entries.extend(parse_sitemap(child))
+        return entries
 
-    # <urlset> case
-    urlset = soup.find("urlset")
-    if not urlset:
-        url_elems = soup.find_all("url")
-        if url_elems:
-            return [u.loc.text.strip() for u in url_elems if u.loc and u.loc.text]
-        return []
+    url_nodes = soup.find_all("url")
+    for node in url_nodes:
+        loc_tag = node.find("loc")
+        if not loc_tag or not loc_tag.text:
+            continue
+        loc_text = loc_tag.text.strip()
+        if not loc_text:
+            continue
+        lastmod_tag = node.find("lastmod")
+        lastmod_text = None
+        if lastmod_tag and lastmod_tag.text:
+            lastmod_text = lastmod_tag.text.strip() or None
+        entries.append({"url": loc_text, "lastmod": lastmod_text})
 
-    for u in urlset.find_all("url"):
-        loc = u.find("loc")
-        if loc and loc.text:
-            urls.append(loc.text.strip())
-
-    return urls
+    return entries
 
 # -------------------- Extraction --------------------
 def extract_main_html(full_html: str, css_selector: Optional[str]) -> str:
@@ -251,35 +259,152 @@ def extract_title(html: str) -> str:
         pass
     return ""
 
-# -------------------- Helpers --------------------
-def load_inventory(path: str) -> Set[str]:
+def parse_lastmod_timestamp(value: Optional[str]) -> Optional[datetime]:
+    if not value:
+        return None
+    text = value.strip()
+    if not text:
+        return None
+    cleaned = text
+    if cleaned.endswith("Z"):
+        cleaned = cleaned[:-1] + "+00:00"
+    try:
+        dt = datetime.fromisoformat(cleaned)
+    except ValueError:
+        # Try to normalise space-separated format
+        try:
+            dt = datetime.fromisoformat(cleaned.replace(" ", "T"))
+        except ValueError:
+            log.debug(f"Could not parse lastmod value '{text}'")
+            return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    else:
+        dt = dt.astimezone(timezone.utc)
+    return dt
+
+
+def dedupe_entries(entries: List[SitemapEntry]) -> List[SitemapEntry]:
+    deduped: Dict[str, SitemapEntry] = {}
+    for entry in entries:
+        url = entry["url"]
+        lastmod = entry.get("lastmod")
+        existing = deduped.get(url)
+        if not existing:
+            deduped[url] = entry
+            continue
+        new_dt = parse_lastmod_timestamp(lastmod)
+        existing_dt = parse_lastmod_timestamp(existing.get("lastmod"))
+        if new_dt and existing_dt:
+            if new_dt > existing_dt:
+                deduped[url] = entry
+        elif lastmod and not existing.get("lastmod"):
+            deduped[url] = entry
+    return sorted(deduped.values(), key=lambda e: e["url"])
+
+
+def parse_sitemap_content(content: str) -> List[SitemapEntry]:
+    soup = BeautifulSoup(content, "xml")
+    entries: List[SitemapEntry] = []
+    for node in soup.find_all("url"):
+        loc_tag = node.find("loc")
+        if not loc_tag or not loc_tag.text:
+            continue
+        loc_text = loc_tag.text.strip()
+        if not loc_text:
+            continue
+        lastmod_tag = node.find("lastmod")
+        lastmod_text = None
+        if lastmod_tag and lastmod_tag.text:
+            lastmod_text = lastmod_tag.text.strip() or None
+        entries.append({"url": loc_text, "lastmod": lastmod_text})
+    return dedupe_entries(entries)
+
+
+def load_previous_sitemap(path: Optional[str]) -> List[SitemapEntry]:
     if not path or not os.path.exists(path):
-        return set()
+        return []
     try:
         with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return set(data.get("urls", []))
-    except Exception:
-        return set()
+            content = f.read()
+    except Exception as exc:
+        log.warning(f"Failed to read previous sitemap from {path}: {exc}")
+        return []
+    return parse_sitemap_content(content)
 
-def save_inventory(path: str, urls: Set[str]):
+
+def save_sitemap_copy(path: Optional[str], entries: List[SitemapEntry]):
     if not path:
         return
+    directory = os.path.dirname(path)
+    if directory:
+        os.makedirs(directory, exist_ok=True)
+    sorted_entries = sorted(entries, key=lambda e: e["url"])
+    urlset = ET.Element("urlset")
+    urlset.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
+    for entry in sorted_entries:
+        url_elem = ET.SubElement(urlset, "url")
+        loc_elem = ET.SubElement(url_elem, "loc")
+        loc_elem.text = entry["url"]
+        if entry.get("lastmod"):
+            lastmod_elem = ET.SubElement(url_elem, "lastmod")
+            lastmod_elem.text = entry["lastmod"]
+    tree = ET.ElementTree(urlset)
     tmp = path + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as f:
-        json.dump({"urls": sorted(urls)}, f, ensure_ascii=False, indent=2)
+    tree.write(tmp, encoding="utf-8", xml_declaration=True)
     os.replace(tmp, path)
 
-def apply_excludes(urls: List[str], patterns: List[str]) -> (List[str], List[str]):
+
+def read_last_run_time(path: Optional[str]) -> Optional[datetime]:
+    if not path or not os.path.exists(path):
+        return None
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            text = f.read().strip()
+    except Exception as exc:
+        log.warning(f"Failed to read last run timestamp from {path}: {exc}")
+        return None
+    if not text:
+        return None
+    try:
+        dt = datetime.fromisoformat(text)
+    except ValueError:
+        dt = parse_lastmod_timestamp(text)
+        if not dt:
+            log.warning(f"Could not parse last run timestamp '{text}' from {path}")
+            return None
+        return dt
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    else:
+        dt = dt.astimezone(timezone.utc)
+    return dt
+
+
+def write_last_run_time(path: Optional[str], run_time: datetime):
+    if not path:
+        return
+    directory = os.path.dirname(path)
+    if directory:
+        os.makedirs(directory, exist_ok=True)
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(run_time.isoformat())
+    os.replace(tmp, path)
+
+
+def apply_excludes(entries: List[SitemapEntry], patterns: List[str]) -> (List[SitemapEntry], List[SitemapEntry]):
     if not patterns:
-        return urls, []
+        return entries, []
     regs = [re.compile(p) for p in patterns]
-    kept, dropped = [], []
-    for u in urls:
-        if any(r.search(u) for r in regs):
-            dropped.append(u)
+    kept: List[SitemapEntry] = []
+    dropped: List[SitemapEntry] = []
+    for entry in entries:
+        url = entry["url"]
+        if any(r.search(url) for r in regs):
+            dropped.append(entry)
         else:
-            kept.append(u)
+            kept.append(entry)
     if dropped:
         log.info(f"Excluded by pattern: {len(dropped)} URL(s)")
     return kept, dropped
@@ -295,63 +420,107 @@ def main(sitemap_url: str,
          use_tiktoken: bool = True,
          min_chars: int = 200,
          exclude_patterns: Optional[List[str]] = None,
-         inventory_file: Optional[str] = None,
          namespace: str = "",
          store_text: bool = False,
-         preview_chars: int = 3000):
+         preview_chars: int = 3000,
+         state_dir: Optional[str] = None):
     log.info(f"Parsing sitemap: {sitemap_url}")
+    run_started_at = datetime.now(timezone.utc)
 
-    # Parse full sitemap first (to know what was excluded)
-    all_urls = sorted(set(parse_sitemap(sitemap_url)))
-    log.info(f"Found {len(all_urls)} URLs in sitemap")
+    raw_entries = parse_sitemap(sitemap_url)
+    all_entries = dedupe_entries(raw_entries)
+    log.info(f"Found {len(all_entries)} URLs in sitemap")
 
     # Domain filter
     if allow_domains:
         allow_set = set(allow_domains)
-        all_urls = [u for u in all_urls if any(urlparse(u).netloc.endswith(d) for d in allow_set)]
-        log.info(f"After domain filter: {len(all_urls)} URLs")
+        all_entries = [
+            entry for entry in all_entries
+            if any(urlparse(entry["url"]).netloc.endswith(d) for d in allow_set)
+        ]
+        log.info(f"After domain filter: {len(all_entries)} URLs")
+
+    last_run_time_path: Optional[str] = None
+    last_sitemap_path: Optional[str] = None
+    previous_entries: List[SitemapEntry] = []
+    last_run_time: Optional[datetime] = None
+
+    if state_dir:
+        last_run_time_path = os.path.join(state_dir, "last_run_time.txt")
+        last_sitemap_path = os.path.join(state_dir, "last_sitemap.xml")
+        previous_entries = load_previous_sitemap(last_sitemap_path)
+        last_run_time = read_last_run_time(last_run_time_path)
+        if not previous_entries and not last_run_time:
+            log.info("State files not found; performing full reindex.")
+        else:
+            if not previous_entries:
+                log.info("Previous sitemap not found; deletions will not be detected this run.")
+            if not last_run_time:
+                log.info("Last run timestamp missing; reindexing all eligible URLs.")
 
     # Exclude patterns -> split into kept/excluded
-    urls, excluded_now = apply_excludes(all_urls, exclude_patterns or [])
+    kept_entries, excluded_entries = apply_excludes(all_entries, exclude_patterns or [])
+    log.info(f"{len(kept_entries)} URL(s) remain after excludes")
 
-    # Limit after excludes
+    # Detect removals before applying lastmod filter or limit
+    vanished_urls: List[str] = []
+    if previous_entries:
+        prev_urls = {entry["url"] for entry in previous_entries}
+        current_urls = {entry["url"] for entry in all_entries}
+        vanished_urls = sorted(prev_urls - current_urls)
+        if vanished_urls:
+            log.info(f"Detected {len(vanished_urls)} URL(s) removed since last run")
+
+    # Filter by lastmod > last_run_time
+    entries_to_process = kept_entries
+    if last_run_time:
+        filtered: List[SitemapEntry] = []
+        for entry in kept_entries:
+            lastmod_dt = parse_lastmod_timestamp(entry.get("lastmod"))
+            if lastmod_dt is None or lastmod_dt > last_run_time:
+                filtered.append(entry)
+        log.info(
+            f"{len(filtered)} URL(s) to index after lastmod filter (last run at {last_run_time.isoformat()})"
+        )
+        entries_to_process = filtered
+    else:
+        log.info("No last run timestamp; indexing all remaining URLs.")
+
+    # Apply limit after lastmod filter
     if limit is not None:
-        urls = urls[:limit]
-        log.info(f"Limiting to first {limit} URLs")
-
-    # Inventory load (for sitemap diff tombstones)
-    prev_urls = load_inventory(inventory_file) if inventory_file else set()
+        entries_to_process = entries_to_process[:limit]
+        log.info(f"Limiting to first {len(entries_to_process)} URL(s) after filters (limit={limit})")
 
     if dry_run:
-        for u in urls:
-            log.info(f"DRY-RUN keep: {u}")
-        for u in excluded_now:
-            log.info(f"DRY-RUN EXCLUDE (will delete): {u}")
-        if inventory_file:
-            vanished = sorted(prev_urls - set(all_urls))
-            if vanished:
-                log.info(f"DRY-RUN would delete {len(vanished)} URL(s) vanished from sitemap.")
+        for entry in entries_to_process:
+            log.info(f"DRY-RUN reindex: {entry['url']} (lastmod={entry.get('lastmod') or 'n/a'})")
+        for entry in excluded_entries:
+            log.info(f"DRY-RUN EXCLUDE (will delete): {entry['url']}")
+        if vanished_urls:
+            log.info(f"DRY-RUN would delete {len(vanished_urls)} URL(s) vanished from sitemap.")
         log.info("Dry run only. Exiting.")
         return
 
     ensure_index(PINECONE_INDEX)
 
-    # 1) Delete URLs that vanished from the sitemap since last run
-    if inventory_file and prev_urls:
-        vanished = sorted(prev_urls - set(all_urls))
-        if vanished:
-            log.info(f"Deleting {len(vanished)} URL(s) vanished from sitemap since last run…")
-            delete_by_urls(PINECONE_INDEX, vanished, namespace=namespace)
+    # Delete URLs that vanished from the sitemap since last run
+    if vanished_urls:
+        log.info(f"Deleting {len(vanished_urls)} URL(s) vanished from sitemap since last run…")
+        delete_by_urls(PINECONE_INDEX, vanished_urls, namespace=namespace)
 
-    # 2) Delete URLs matching current exclude patterns
-    if excluded_now:
-        log.info(f"Deleting {len(excluded_now)} URL(s) due to exclude patterns…")
-        delete_by_urls(PINECONE_INDEX, list(excluded_now), namespace=namespace)
+    # Delete URLs matching current exclude patterns
+    if excluded_entries:
+        excluded_urls = [entry["url"] for entry in excluded_entries]
+        log.info(f"Deleting {len(excluded_urls)} URL(s) due to exclude patterns…")
+        delete_by_urls(PINECONE_INDEX, excluded_urls, namespace=namespace)
 
-    # 3) Ingest kept URLs
-    for uix, url in enumerate(urls, 1):
+    if not entries_to_process:
+        log.info("No URLs require indexing after lastmod filter. Updating state only.")
+    total = len(entries_to_process)
+    for idx, entry in enumerate(entries_to_process, 1):
+        url = entry["url"]
         try:
-            log.info(f"[{uix}/{len(urls)}] Fetch: {url}")
+            log.info(f"[{idx}/{total}] Fetch: {url}")
             try:
                 r = http_get(url, timeout=25)
             except NotFound:
@@ -383,7 +552,6 @@ def main(sitemap_url: str,
             )
             log.info(f"Chunked into {len(chunks)} parts")
 
-            # Embed in batches
             embeds: List[List[float]] = []
             for i in range(0, len(chunks), batch_size):
                 batch = chunks[i:i+batch_size]
@@ -392,13 +560,12 @@ def main(sitemap_url: str,
 
             title = extract_title(r.text)
             vecs = []
-            # include chunk text in metadata when requested
-            for idx, (chunk, emb) in enumerate(zip(chunks, embeds)):
-                vid = sha1(f"{url}:::{idx}")
+            for chunk_idx, (chunk, emb) in enumerate(zip(chunks, embeds)):
+                vid = sha1(f"{url}:::{chunk_idx}")
                 meta = {
                     "url": url,
                     "title": title,
-                    "chunk": idx,
+                    "chunk": chunk_idx,
                     "n_chunks": len(chunks)
                 }
                 if store_text:
@@ -416,16 +583,18 @@ def main(sitemap_url: str,
             log.debug(traceback.format_exc())
             continue
 
-    # Save the full sitemap URL set as inventory baseline
-    if inventory_file:
-        save_inventory(inventory_file, set(all_urls))
+    if state_dir:
+        os.makedirs(state_dir, exist_ok=True)
+        save_sitemap_copy(last_sitemap_path, all_entries)
+        write_last_run_time(last_run_time_path, run_started_at)
+        log.info("Persisted sitemap snapshot and last run timestamp.")
 
     log.info("Done.")
 
 # -------------------- CLI --------------------
 if __name__ == "__main__":
     import argparse
-    ap = argparse.ArgumentParser(description="Scrape sitemap URLs into Pinecone (with excludes, tombstoning, and stored text)")
+    ap = argparse.ArgumentParser(description="Scrape sitemap URLs into Pinecone with incremental updates based on lastmod")
     ap.add_argument("sitemap", help="URL to sitemap.xml (or sitemap index)")
     ap.add_argument("--allow-domain", action="append", default=[], help="Limit to domain(s), e.g. --allow-domain example.com")
     ap.add_argument("--css", default=".theme-doc-markdown.markdown", help="CSS selector for content container")
@@ -436,7 +605,7 @@ if __name__ == "__main__":
     ap.add_argument("--no-tiktoken", action="store_true", help="Use char-based chunking (lower RAM)")
     ap.add_argument("--min-chars", type=int, default=20, help="Minimum characters required to index a page")
     ap.add_argument("--exclude", action="append", default=[], help="Regex to exclude URLs (can be repeated)")
-    ap.add_argument("--inventory-file", help="Path to JSON storing last-run sitemap URLs (for diff-based deletions)")
+    ap.add_argument("--state-dir", help="Directory to persist last run timestamp and sitemap snapshot")
     ap.add_argument("--namespace", default=os.environ.get("PINECONE_NAMESPACE", ""), help="Pinecone namespace (optional)")
     ap.add_argument("--store-text", action="store_true", help="Store chunk text in Pinecone metadata for reranking")
     ap.add_argument("--preview-chars", type=int, default=3000, help="Max chars of chunk text to store in metadata")
@@ -458,10 +627,11 @@ if __name__ == "__main__":
             use_tiktoken=not args.no_tiktoken,
             min_chars=args.min_chars,
             exclude_patterns=args.exclude,
-            inventory_file=args.inventory_file,
             namespace=args.namespace,
             store_text=args.store_text,
             preview_chars=args.preview_chars,
+            state_dir=args.state_dir,
         )
     except KeyboardInterrupt:
         log.warning("Interrupted by user")
+

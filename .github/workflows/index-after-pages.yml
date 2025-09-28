@@ -1,0 +1,132 @@
+name: Index docs after Cloudflare Pages deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+concurrency:
+  group: pages-index-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  wait-and-index:
+    runs-on: ubuntu-latest
+
+    env:
+      # Cloudflare
+      CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+      CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      CF_PAGES_PROJECT_NAME: ${{ secrets.CF_PAGES_PROJECT_NAME }}
+      SITE_BASE: ${{ secrets.SITE_BASE }}
+
+      # Your indexer config
+      OPENAI_API_KEY:   ${{ secrets.OPENAI_API_KEY }}
+      PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+      PINECONE_INDEX:   ${{ secrets.PINECONE_INDEX }}
+      PINECONE_REGION:  ${{ secrets.PINECONE_REGION }}
+      PINECONE_CLOUD:   ${{ secrets.PINECONE_CLOUD }}
+
+      # Used to match the deployment to this commit
+      GIT_SHA: ${{ github.sha }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install jq (for JSON parsing)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      # ⬇️ Bring back previous run's state (if any)
+      - name: Download pinecone-state artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pinecone-state
+          path: pinecone-state
+        continue-on-error: true
+
+      - name: Wait for Cloudflare Pages to deploy this commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          API="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/${CF_PAGES_PROJECT_NAME}/deployments"
+          echo "Waiting for CF Pages deployment of commit ${GIT_SHA}…"
+
+          attempt=0
+          max_attempts=60   # ~10 minutes total at 10s intervals
+          sleep_sec=10
+
+          while (( attempt < max_attempts )); do
+            attempt=$((attempt+1))
+
+            resp="$(curl -fsS -G \
+              -H "Authorization: Bearer ${CF_API_TOKEN}" \
+              -H "Content-Type: application/json" \
+              --data-urlencode "per_page=20" \
+              "${API}")"
+
+            status=$(echo "$resp" \
+              | jq -r --arg sha "$GIT_SHA" '
+                  .result
+                  | map(select(.deployment_trigger.metadata.commit_hash==$sha))
+                  | first
+                  | if .==null then "notfound" else .latest_stage.status end')
+
+            url=$(echo "$resp" \
+              | jq -r --arg sha "$GIT_SHA" '
+                  .result
+                  | map(select(.deployment_trigger.metadata.commit_hash==$sha))
+                  | first
+                  | if .==null then "" else .url end')
+
+            echo "Attempt ${attempt}: status=${status} ${url:+url=${url}}"
+
+            if [[ "$status" == "success" ]]; then
+              echo "✅ Deployed at: ${url}"
+              break
+            elif [[ "$status" == "failure" ]]; then
+              echo "❌ Cloudflare Pages marked this deployment as failed."
+              exit 1
+            fi
+
+            sleep "$sleep_sec"
+          done
+
+          if (( attempt == max_attempts )); then
+            echo "Timed out waiting for Cloudflare Pages to deploy commit ${GIT_SHA}"
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # if your repo has a requirements.txt, install it:
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 👉 Run the script with the persisted state dir
+      - name: Run sitemap_to_pinecone.py (stateful)
+        run: |
+          python scripts/sitemap_to_pinecone.py \
+            "${SITE_BASE%/}/sitemap.xml" \
+            --state-dir pinecone-state
+
+      # ⬆️ Re-upload the updated state for the next run
+      - name: Upload pinecone-state artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pinecone-state
+          path: pinecone-state
+          if-no-files-found: warn
+          retention-days: 90
