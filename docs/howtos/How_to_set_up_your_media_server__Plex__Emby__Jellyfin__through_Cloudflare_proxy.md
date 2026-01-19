@@ -73,9 +73,9 @@ At the center of the screen, you can see the DNS management for your site. Just 
 
 You need to know two things before you proceed with inputting the record. The first one is your **seedbox username** (easy!) and the second one the **IP** of your seedbox server.
 For the latter, leave the cloudflare tab open and open a new tab in your browser. Head to your client area at **seedboxes.cc** and click your seedbox in which your media server resides (let's assume that you are using **plex** as your media server).
-Under the seedbox information, you can see the **Server IP**, so just copy that and be ready to paste it at cloudflare
+Under the seedbox general information, you can see the **Server IP**, so just copy that and be ready to paste it at cloudflare
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1649414842269.20.28.jpg)
+![information_ip.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/27f7157f-96e0-4e0f-ac44-23645fa82d1f.png)
 
 > Type: A,
 Name: **seedboxusername**-**plex**

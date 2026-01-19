@@ -14,19 +14,17 @@ Your seedbox is a small part of a larger, remote server, which we call a slot. Y
 ## Your Client Area
 The first thing you should try after your seedbox has been activated, is to log in to your [client area](https://seedboxes.cc/client/). This is a **custom** software, made by us, in order for you to easily manage your seedboxes, payments, monitor your usage and have a general overview of your account.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590750644522.png)
+![file](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a26847ea-a04d-4fe9-b283-ecb5108404b3.png)
 
 After you login to your client, click on the "**My Client Area**" button and you will be redirected to the main page of your dashboard which looks like this:
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590750745477.png)
+![client_area.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/f24513ed-231b-4099-ae6f-3dcbdf6d93ac.png)
 
-As you can see on the picture above, the main page gives you a good overview of your account. On the top you get the main functionalities of your client area (Dashboard, Invoices, Tickets, Settings), right below that panel you can see your available **credit balance** and usage statistics, in the middle a list of your **seedboxes**, **unpaid invoices**, **support tickets** and important **service announcements** and finally on the right, posts from our **blog** and **twitter**. You can edit your profile by cliking on the top right corner to the arrow next to your email-username and click at "**Edit Profile**" as you can see in the image right below.
+As you can see on the picture above, the main page gives you a good overview of your account. On the sidebar you get the main functionalities of your client area (Dashboard, My Seedboxes, Invoices, Tickets, Settings), on the top of the main page you see your **Account Credit**, right below a list of your **seedboxes** and **unpaid invoices**, and below that, posts from our **blog** with service announcements. 
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590753189196.png)
+Under your "**Available Balance**" there is an "**+Add**" button from where you can access the "**+Add Funds**" option which allows you to add funds to your account in order for the system to automatically use and pay any future invoices.
 
-Under your "**CREDIT BALANCE**" there is an "**+Add more**" button from where you can access the "**+Add Funds**" option which allows you to add funds to your account in order for the system to automatically use and pay any future invoices.
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491557252178.jpeg)
+![topup.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/32e220d4-e7d6-4208-a54b-f08ab7bfd705.png)
 
 :::info Please Note
 
@@ -34,43 +32,65 @@ Added funds only work on future invoices. If you have an unpaid invoice, it is b
 :::
 
 ## Your Settings Area
-You can access your **Settings** area from the top panel. There you can find some main information about your profile and the option to [change your seedbox password](../howtos/How_to_change_your_seedbox_password.md) if you like. Also here you can find two more settings for you to enable:
+![settings.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/df728bb0-5121-4852-a589-3b2234b10122.png)
 
-* **Api Access**
-* **Two Factor Authentication**
+You can access your **Settings** area from the sidebar. Here you can do the following:
+- Update the name in your Profile
+- Change your Seedboxes.cc account email
+- Change your Seedboxes.cc account password
+- Enable or Disable two factor authentication for your Seedboxes.cc account, for added security during logging in.
+- Link your Discord account, so that you can be identified automatically in our Discord Channel. There is a guide for this [here](../gettingstarted/Getting_started_with_Discord.md).
+- Enable/Disable a **Default Payment Method** in order to pay your invoices automatically.
+- And finally you have the ability to delete your Seedboxes.cc account.
 
-The first one, is only used in specific cases and not applicable for most users. For **security** reasons never have this feature enabled unless you are actually using it. The second one offers you the ability for 2 Factor Authentication via Google Authenticator for extra security. 
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590753248584.png)
+:::info Please Note
+You cannot delete your Seedboxes.cc account while you have active services in your account
+::: 
 
 ## Managing your seedbox
-From the main page of your client area, under the list which says **My Seedboxes**, locate the seedbox you want to manage and click the gear icon. In the drop-down menu that appears click on the **Manage Seedbox** option.
+From the main page of your client area, under the list which says **My Seedboxes**, locate the seedbox you want to manage and click on it. 
 
-After you do that, you will be redirected to a page that looks like this:
+After you do that, you will be redirected to the seedbox page that looks like this:
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590753641368.png)
+![seedbox.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a2391f98-b625-47a5-93b7-2932efd56c24.png)
 
-On the upper part of the page, you can see usage statistics for your seedbox. This is the easiest and more accurate way to know if you are within the allowed limits of your seedbox.
+On the top right of the page is the main navigation of the subsections of your seedbox page: **Overview**, **Apps**, **VPN** and **Settings**.
 
-Below the usage statistics, you will find the **General Info** which contains generic information about your seedbox such as server name, server IP, your currently selected torrent client and other useful information. And of course, on the right of the General Info, a nice **Usage graph** couldn't be missing from your client area. You will also notice the "**Restart Seedbox**" button which does what the name implies, restarts your seedbox.
+Right below, you can see live usage statistics for your seedbox. This is the easiest and more accurate way to know if you are within the allowed limits of your seedbox. They update every 5 seconds.
 
-:::tip
-Restarting your seedbox, basically just restarts your torrent client. It does not restart any other apps installed in your seedbox. If you wish to restart an app, you can do so in the "Installable apps" tab explained later in this guide.
-:::
+Below the usage statistics, you will find the **General Information** which contains generic information about your seedbox such as server name, server IP, your currently selected torrent client and other useful information. And of course, on the right of the General Info, a nice **Usage graph** couldn't be missing from your client area. 
 
-Moving further down on the page you will find a box with the following tabs:
+Moving further down on the page you will find the connection details for the services of your Seedbox, how to connect to Seedbucket, your torrent client WebUI, and how to connect via FTP, SFTP, Webdav, SSH.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590753810192.png)
+**Apps**
 
-**Seedbox**
+At this subsection of your seedbox page you can find the  **1-Click Installable Applications**. With the click of a button, you can install any of the available applications you see on the list to your seedbox.
 
-Under the **Seedbox** tab you will find the options listed in the figure below:
+![apps.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/21fce9af-c775-4dca-95f0-26c2fe857578.png)
+
+After you install an application, it will show in the "Installed Applications" list, and if you click on it, you can see "Usage information", along with action buttons to Restart, Stop, Uninstall the app.
+
+If the application you've just installed has a web interface, in order to access it just click the **Go to App** button next to it. 
+
+![app_info.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/d493786a-060f-4de1-b081-d41e44720485.png)
+
+We always try to have the latest versions available and we always add new applications to the list. All apps are set to automatically update every week.
+
+**VPN**
+
+Under the **VPN** subsection you can add/remove for your VPN service and download the VPN configuration for your Wireguard client.
+
+We have a guide on how to utilize the [VPN service here](./How_to_use_your_Seedboxes.cc_VPN_service.mdx).
+
+![vpn.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/1452e298-d38d-4f64-afa9-d1b365e1dbf9.png)
+
+**Settings**
+
+Under the **Settings** subsection you will find the options listed in the figure below:
 
 * **Login Information**: The username and password of your seedbox. From here you can also [change your seedbox password](../howtos/How_to_change_your_seedbox_password.md) if required.
-* **Torrent Client WebUI**: Change your default torrent client. Please note that you can only use one **(1)** torrent client at a time.
-* **Seedbucket**: This is an advanced -yet extremely easy to use- file manager for your seedbox with an integrated torrent client (rutorrent v3/v4, deluge v1/v2, transmission and qbittorrent supported). You can check our detailed guide [here](../seedbucket/How_to_use_Seedbucket.md).
-* **FTP/SFTP Access**: Here you will find all the information for you to establish an FTP or an SFTP connection with your seedbox. By clicking the **Filezilla Configuration** button you will download an automatically generated configuration file for you in order to import to your [Filezilla FTP client and connect to your seedbox via FTP](../howtos/How_to_connect_via_FTP_to_your_account_using_FileZilla.md).
-* **SSH Access**: Provides you the information for an SSH connection with your seedbox. 
+* **Torrent Client**: Change your default torrent client. Please note that you can only use one **(1)** torrent client at a time. Here also you have the option to [restart your torrent client](../howtos/How_to_restart_your_seedbox.md).
+* **Billing Cycle**: You can change your billing cycle here, so that you will be charged at different interval for your service. Using the annual billing cycle, carries an additional discount as well.
 * **Promo codes**: If you have any promo codes, enter them at the field and click the corresponding button
 * **Cancel Seedbox**: If you ever wish to cancel your seedbox, this is the place to do it :(
 
@@ -78,34 +98,8 @@ Under the **Seedbox** tab you will find the options listed in the figure below:
 The cancellation button in your client area, will automatically cancel your service **at the end of the current billing cycle**. If you wish to cancel your service immediatelly (in order to receive a refund in the first week of your service), please open a support ticket with this request.
 :::
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1687938903006.53.19.jpg)
+![seedbox_settings.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/4cdf1fb9-4b0b-4da1-9540-16034693689f.png)
 
-**VPN**
-
-Under the **VPN** tab you will find the options listed in the figure below:
-
-* **Download Configuration**: Here you can download the wireguard configuration for the [VPN service](./How_to_use_your_Seedboxes.cc_VPN_service.mdx).
-* **Delete**: Here you can delete the wireguard configuration in order to free a slot and create a new one.
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1687939424449.00.36.jpg)
-
-
-**Installable Apps**
-
-At this last tab you will find our **1-Click Installable Applications**. With the click of a button, you can install any of the available applications you see on the list to your seedbox.
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590754200261.png)
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590754208246.png)
-
-If the application you've just installed has a web interface, in order to access it just click the **Go to application** button next to it. All applications have an **Infobutton** which contains useful information and we strongly recommend reading before you install an application.
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590754457865.png)
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590754464820.png)
-
-We always try to have the latest versions available and we always add new applications to the list. All apps are set to automatically update every week.
-Feel free to play around with your client area in order to get more familiar with it.
 
 It's time to move to the next step, to actually using your seedbox. This is just a basic guide on how to start using your seedbox but you can do much more advanced things which are not covered here.
 

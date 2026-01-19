@@ -34,11 +34,11 @@ Once installed, create a free Discord account (if you don’t already have one).
 
 To get the right permissions and access all features in our Discord server, you’ll need to link your Seedboxes.cc account with Discord:
 
-1. Log in to your [Seedboxes.cc Client Area](https://www.seedboxes.cc/client/settings).  
+1. Log in to your [Seedboxes.cc Client Area](https://www.seedboxes.cc/dashboard/settings).  
 2. Go to **Settings** in your account.  
 3. In the **Discord** section, click **Link Discord**.  
 
-![](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/f9011f1f-6595-49ef-9b21-20a0da242a60.png)
+![dashboard_settings.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/f336f8c6-ed3e-4412-9be9-4910643dc8c2.png)
 
 4. Authorize the connection when prompted by Discord.  
 5. Once linked, you can click on the "Join our Discord" button, to get an invitation and join our Discord Channel.  

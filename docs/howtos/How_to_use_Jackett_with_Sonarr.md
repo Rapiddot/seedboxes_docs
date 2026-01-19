@@ -21,9 +21,7 @@ From the official Jackett app github:
 In this guide, we will be using Jackett for scraping torrents into Sonarr app
 
 ## Installation
-Go to your client area, click the **Installable Apps** section and add both applications via **+Add Application** button. You can find a more detailed guide regarding 1-click installation of the apps [here](./How_to_install_our_1-Click_applications.md)
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1558953823325.png)
+Go to your client area, click the **Apps** section and add both applications via **+Install Application** button. You can find a more detailed guide regarding 1-click installation of the apps [here](./How_to_install_our_1-Click_applications.md)
 
 ### **Jackett**
 Click **Go to Application** and a new window will be opened. After your successful login, then main page of the Jackett app will appear. On the top right corner you can find your **API Key** that will be needed afterwards

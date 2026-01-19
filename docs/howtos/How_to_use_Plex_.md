@@ -24,23 +24,22 @@ First you need to create a [Plex.tv](https://www.plex.tv/) account if you alread
 * Login to your [client area](https://seedboxes.cc/client/dashboard).
     After you log in to your seedbox account, click in the **"My Client Area"** button.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491572428955.jpeg)
+![file](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a26847ea-a04d-4fe9-b283-ecb5108404b3.png)
 
-*  Under **"My Seedboxes"** click on the little gear icon next to the seedbox you want to use and click on the **"Manage Seedbox"** button.
+* In your dashboard, select the seedbox where you want to install Plex.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491572473836.jpeg)
+![client_area_select seedbox.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a7d33c23-234c-47af-aaa0-68b39f72a763.png)
 
-* Scroll down and Click on the **Installable Apps** Tab. Click on **"Add Application"**.From the application list, click on **"Plex Media Server"**, then click INSTALL.
+* Select the **"Apps"** Section. Find "Plex" in the "Available Applications" list, and click to install it.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491572902963.png)
+![plex_install.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/70a30fb3-224b-4dcf-b1a5-0a6d55a52120.png)
 
 * A popup emerges, which asks your **CLAIM CODE**. This is a code, which can be retrieved from [here](https://www.plex.tv/claim). This code, will link the newly installed Plex Media Server with your [Plex.tv](https://www.plex.tv/features/cloud/) username. This code expires 5 minutes after it is generated, so please make sure to use it immediately after it is generated and proceed with the Plex server installation.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491816935816.png)
+![plex_claim.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/5229ce05-281b-4fd6-ac5e-f30d97d2f844.png)
 
-* Once you click INSTALL, the installation will commence and you will be informed once it is completed.
-* Once Plex is installed, you can click the "Go to Application" button to visit your new plex installation. Alternatively, you can go to https://plex.tv and after you login, to click the "Launch" Button on the top right corner of the screen. 
-* Please login with your [Plex.tv](https://www.plex.tv/features/cloud/) account. Please be careful not to use your [seedboxes.cc](https://seedboxes.cc/) account to login, you need to **use the credentials of your** [Plex.tv](https://www.plex.tv/features/cloud/) **account** instead.
+* Once you click "Continue Install", the installation will commence and you will be informed once it is completed.
+* Once Plex is installed, you can click the "Go to App" button to visit your new plex installation. Alternatively, you can go to https://plex.tv and after you login, to click the "Open Plex" Button on the top right corner of the screen. 
 
 * The setup is now completed. Our automated installer should have created 3 default libraries for you (Movies, TV and Music). You can create as many other libraries as you want of course.
 

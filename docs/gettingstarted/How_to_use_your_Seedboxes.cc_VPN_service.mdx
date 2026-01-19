@@ -40,21 +40,21 @@ For Linux, depending on its distro, you might have to install some packages more
 
 You first need to generate a Wireguard connection. Don't worry, the process is simplified and automated for you!
 
-Just visit your seedbox at your client area, click the tab **"VPN"** and then the **"+ Add VPN connection"** button
+Just visit your seedbox at your client area, click the subsection **"VPN"** and then the **"+ Add VPN connection"** button
 
-![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648459423755.jpeg)
+![vpn.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/24c69e54-20f2-4e97-9b5b-ca217805171e.png)
 
 :::note
 Depending on your seedbox tier, you can generate up to a certain number of Wireguard configurations to be used simultaneously. For the Bat Box tier, that number is 2 whereas for the Red Dragon tier, that number is 5.
 :::
 
-At the new modal, name the connection to your liking (e.g. macbook) and click the **"Create VPN Connection"** button
+At the new modal, name the connection to your liking (e.g. macbook) and click the **"Create Connection"** button
 
-![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648459527106.06.58.jpg)
+![Screenshot 2026-01-18 at 07.32.16.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/bd47e23e-30d8-4544-941d-8c7a19df96fd.png)
 
-That was it, the connection is generated. You can now download it via the **"Download Configuration"** button
+That was it, the connection is generated. You can now download it via the **"Get VPN Configuration"** button
 
-![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648459846806.jpeg)
+![Screenshot 2026-01-18 at 07.32.36.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/3131eeb3-fc6d-40e8-8b51-65ea99833fa3.png)
 
 ### Setup
 
@@ -64,13 +64,11 @@ The  configuration (tunnel) is now ready to be used. For desktops/laptops, you d
 
 At the new modal, you can choose the country of the VPN server. For best performance, it is already preselected for you
 
-![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648460150844.34.34.jpg)
+![download_vpn_config.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/8d0414f4-ee2b-41e0-921b-03954d4dca31.png)
 
 Alternatively, click to reveal the dropdown menu and manually select a) the country of the VPN server and b) the VPN server itself
 
-![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648460231246.09.15.jpg)
-
-Either way, click the **"Download Wireguard VPN Configuration"** once ready so you can download the file locally.
+Either way, click the **"Download Config"** once ready so you can download the file locally.
 The filename should be something like **"sbccvpn_wireguard.conf"**.
 
 Open up your Wireguard app and choose to import the file you just downloaded. You should see a button named **Import tunnel(s) from file** or equivalent.
@@ -127,12 +125,12 @@ sudo wg-quick down wg0
 
 #### Tablet / Mobile
 
-For tablet/mobile devices, you again select the VPN country and server as with Desktop / Laptops (or just use the preselected / default), but now you click the **"Get Wireguard QRCode"** button instead.
+For tablet/mobile devices, you again select the VPN country and server as with Desktop / Laptops (or just use the preselected / default), but now you click the **"Show QRCode"** button instead.
 **Note:**: You could download the configuration file to your device and then import it (as you would do with desktop / laptop) but the QR code is easier and faster.
 
 A new modal will appear with the QR code revealed
 
-![](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1648461338777.09.59.jpg)
+![Screenshot 2026-01-18 at 07.32.51.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/1de6937d-74b9-4ac7-8efa-cd6caad6790d.png)
 
 :::note
 The above QR code is invalid, it is only shown as a demonstration

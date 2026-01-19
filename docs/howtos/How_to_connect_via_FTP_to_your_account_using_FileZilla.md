@@ -19,17 +19,17 @@ We made it very simple to configure it, and it is simple to use.
 In detail:
 
 * Download and install FileZilla
-* Login to your [client area](https://www.seedboxes.cc/client). After you log in to your seedbox account, click in the "My Client Area" button.
+* Login to your [client area](https://www.seedboxes.cc/dashboard). After you log in to your seedbox account, click in the "My Client Area" button.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590739822559.png)
+![file](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a26847ea-a04d-4fe9-b283-ecb5108404b3.png)
 
-* Click the little gear icon next to the seedbox that you want to download its ftp configuration and then click at **"Manage Seedbox"**.
+* Select the seedbox you are interested in from the **"My Seedboxes"** list.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590739835323.png)
+![client_area_select seedbox.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a7d33c23-234c-47af-aaa0-68b39f72a763.png)
 
-* Go down to the **"Seedbox"** tab. Next to the **"FTP Access"** section you will see a **"Filezilla Configuration"** button. Press it and you should download a **"sites.xml"** file.
+* Scroll down to the **"Connection Details"**. At the **"FTP"** section you will see a **"Download Filezilla Configuration"** button. Press it and you should download a **"sites.xml"** file.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590739986052.png)
+![ftp.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/feaf6a52-5a8e-4bd8-8f36-1ff60a917814.png)
 
 * Open FileZilla, and go to Settings. In the Transfer options set the Maximum simultaneous transfer to "3"
 

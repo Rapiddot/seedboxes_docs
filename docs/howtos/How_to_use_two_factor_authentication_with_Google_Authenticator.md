@@ -27,15 +27,15 @@ The steps to enable it in your account are as follows:
 2) Login to your [client area](https://seedboxes.cc/client/dashboard).
 After you log in to your seedbox account, click in the **"My Client Area"** button.
 
-   ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491809370664.jpeg)
+   ![file](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a26847ea-a04d-4fe9-b283-ecb5108404b3.png)
 
-3) Go to the **"Settings"** tab, scroll down and turn the **"Two Factor Authentication"** switch on.
+3) Click on the **"Settings"** link on your sidebar, scroll down and press the **"Enable"** Button on the Two-Factor Authentication option.
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491809445356.jpg)
+![settings.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/3a308ea2-cbdd-40cb-9d90-6deb41e978e2.png)
 
 You will be presented with the following screen:
 
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491809480430.jpg)
+![2fa.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/574ba272-3b44-4369-805e-10d1e00bfcf6.png)
 
 4) Open your Google Authenticator app, and select the option **"Scan Barcode"**. Then scan the qr code with your phone's camera. After you scan it, the installation of your account in your google authenticator is complete. You will see the one time passwords appearing on your device
 
@@ -45,11 +45,9 @@ Then **type the current one time password** you see on your phone in the input b
 
 If you did all that correctly, you will receive a success message that your two factor authentication is now **ENABLED** for your account.
 
-*If you wish to disable it ever again in the future, you can go back to this page in your client area, and set the status to OFF.*
+*If you wish to disable it ever again in the future, you can go back to this page in your client area, and click on the "Disable" button.
 
-5) From now on, every time that you login, you will be presented with the following screen that will ask you to verify the one time password from your google authenticator app:
-
-![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1491809554753.png)
+5) From now on, every time that you login, you will be presented with an additional screen that will ask you to verify the one time password from your google authenticator app:
 
 :::warning Important
 In case you want to change device or reinstall google authenticator, you need to disable your two factor authentication in your account, and then re-enable it again, from your new device.

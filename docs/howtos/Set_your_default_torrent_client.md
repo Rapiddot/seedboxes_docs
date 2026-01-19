@@ -19,14 +19,18 @@ The procedure is fairly simple:
 * Login to your [client area](https://seedboxes.cc/client/dashboard).
 After you log in to your seedbox account, click in the **"My Client Area"** button.
 
-    ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590754691339.png)
+    ![file](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a26847ea-a04d-4fe9-b283-ecb5108404b3.png)
 
-* Click the little gear icon next to the seedbox that you want to change its torrent client and then click at **"Manage Seedbox"**.
+* In your dashboard, select the seedbox where you want to change your torrent client.
 
-    ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590754942303.png)
+![client_area_select seedbox.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/a7d33c23-234c-47af-aaa0-68b39f72a763.png)
 
-* Under the **"Seedbox"** tab, look for the **"Torrent Client WebUI"** section. Select your preferred client and confirm your choice when prompted.
+* Navigate to **"Settings"**. Go to the **"Torrent Client"** section. Go to **"Change Client"**.
 
-    ![file](https://rapiddot-support-community-uploads.s3.amazonaws.com/uploads/image-1590754909981.png)
+![seedbox_settings.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/4cdf1fb9-4b0b-4da1-9540-16034693689f.png)
 
-* You will receive a confirmation that your client has been changed. Please allow 1-2 minutes for the change to propagate to your server. Afterwards, you can click at the **"Torrent Client info"** button to check information regarding your torrent client or just hit the **"Go to Torrent client"** button to visit the torrent client's web UI
+* Select your preferred client and confirm your choice when prompted.
+
+![change_client.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/76d20929-a75f-4213-82f6-fc0034eea706.png)
+
+* You will receive a confirmation that your client has been changed. Please allow 1-2 minutes for the change to propagate to your server. Afterwards, you can see your new connection details, to the Overview Seedbox Page, under the "Connection Details" Section.
