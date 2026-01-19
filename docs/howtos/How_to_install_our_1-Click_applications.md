@@ -25,9 +25,9 @@ keywords:
 
 ![apps.png](https://s3.eu-central-1.amazonaws.com/rapiddot-support-community-uploads/2d3f1c90-058f-42f1-af00-600dbbe80412.png)
 
-4. The application which you choose to install should now be listed under **"Installed Applications"**.<br><br>
+4. The application which you choose to install should now be listed under **"Installed Applications"**.<br /><br />
 
-   If you click on the installed Application, an info box will show you the instructions on how to use the application.<br><br>
+   If you click on the installed Application, an info box will show you the instructions on how to use the application.<br /><br />
 
    The following action buttons are available - wherever applicable - next to each application:
 
