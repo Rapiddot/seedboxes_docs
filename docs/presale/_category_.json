@@ -2,8 +2,5 @@
   "label": "Presale Questions",
   "collapsible": true,
   "position": 1,
-  "link": {
-    "type": "generated-index",
-    "title": "Presale Questions"
-  }
+  "link": null
 }

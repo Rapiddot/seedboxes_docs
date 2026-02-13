@@ -15,18 +15,31 @@
   --ifm-color-primary-lightest: #f5b041;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f9fafb;
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Reduce header font sizes */
+  --ifm-h1-font-size: 2rem;
+  --ifm-h2-font-size: 1.5rem;
+  --ifm-h3-font-size: 1.25rem;
+  --ifm-h4-font-size: 1.1rem;
+  --ifm-h5-font-size: 1rem;
+  --ifm-h6-font-size: 0.9rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #ff9f43;
-  --ifm-color-primary-dark: #ff8c1a;
-  --ifm-color-primary-darker: #ff7f00;
-  --ifm-color-primary-darkest: #e67300;
-  --ifm-color-primary-light: #ffb266;
-  --ifm-color-primary-lighter: #ffbf80;
-  --ifm-color-primary-lightest: #ffd9b3;
+  --ifm-color-primary: #eab308;
+  --ifm-color-primary-dark: #d19f07;
+  --ifm-color-primary-darker: #c69507;
+  --ifm-color-primary-darkest: #a37b05;
+  --ifm-color-primary-light: #edc71f;
+  --ifm-color-primary-lighter: #eed335;
+  --ifm-color-primary-lightest: #f4e777;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #0a0a0a;
+  --ifm-background-surface-color: #111111;
+  --ifm-card-background-color: #111111;
 }
 
 .intro_container .card {
@@ -46,6 +59,120 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  max-width: 70%;
+  height: auto;
+}
+
+/* Also apply to article images */
+article img {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .n8n-chat-ui-bot-input-container { border: none !important; }
+
+/* Sidebar styling improvements */
+.menu__link {
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  transition: none !important;
+}
+
+.menu__list-item--collapsed .menu__link,
+.menu__list-item-collapsible .menu__link,
+.menu__link.menu__link--sublist,
+.theme-doc-sidebar-item-category .menu__link--sublist {
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+}
+
+/* Extra specific rule for category titles */
+li.theme-doc-sidebar-item-category .menu__list-item-collapsible a.menu__link--sublist {
+  font-weight: 800 !important;
+}
+
+/* Keep category titles bold on hover, focus, active, and when expanded */
+li.theme-doc-sidebar-item-category .menu__list-item-collapsible a.menu__link--sublist:hover,
+li.theme-doc-sidebar-item-category .menu__list-item-collapsible a.menu__link--sublist:focus,
+li.theme-doc-sidebar-item-category .menu__list-item-collapsible a.menu__link--sublist:active,
+li.theme-doc-sidebar-item-category:not(.menu__list-item--collapsed) .menu__list-item-collapsible a.menu__link--sublist {
+  font-weight: 800 !important;
+}
+
+.menu__link--active,
+.menu__link--active:hover {
+  font-weight: 600 !important;
+}
+
+/* Ensure non-category links stay normal weight during collapse */
+.menu__list-item:not(.menu__list-item-collapsible) .menu__link {
+  font-weight: 400 !important;
+}
+
+.menu__list-item:not(.menu__list-item-collapsible) .menu__link:hover,
+.menu__list-item:not(.menu__list-item-collapsible) .menu__link:focus {
+  font-weight: 400 !important;
+}
+
+/* Reduce sidebar arrow icon size */
+.menu__link--sublist-caret::after,
+.menu__caret::before {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  background-size: 1rem !important;
+}
+
+.menu__list-item-collapsible .menu__link svg,
+.menu__caret svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* Add margin to breadcrumbs */
+.theme-doc-breadcrumbs,
+nav.breadcrumbs {
+  margin-top: 0.8rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+/* Add padding to sidebar menu */
+.theme-doc-sidebar-menu {
+  padding-top: 0.8rem !important;
+}
+
+.menu {
+  padding-top: 1rem !important;
+}
+
+/* Additional header size adjustments */
+article h1 {
+  font-size: 2rem !important;
+  margin-top: 1rem !important;
+}
+
+article h2 {
+  font-size: 1.5rem !important;
+}
+
+article h3 {
+  font-size: 1.25rem !important;
+}
+
+/* Make pagination boxes smaller */
+.pagination-nav__link {
+  padding: 0.75rem 1rem !important;
+  font-size: 0.875rem !important;
+}
+
+.pagination-nav__label {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.875rem !important;
+  margin-top: 0.25rem !important;
+}
