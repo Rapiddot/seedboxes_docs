@@ -239,7 +239,7 @@ Finally, as with the associated drives, once you install the crypt drive, the da
 
 #### **Remote Agent**
 
-Please check our [How to use Seedbucket Remote Agent](../How_to_use_Seedbucket_Remote_Agent.md) guide.
+Please check our [How to use Seedbucket Remote Agent](./How_to_use_Seedbucket_Remote_Agent.md) guide.
 
 ### Adding your connected drives to your dashboard
 
