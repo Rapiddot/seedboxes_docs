@@ -237,6 +237,10 @@ For reference, the associated drive won't be able to decrypt the content, so if 
 
 Finally, as with the associated drives, once you install the crypt drive, the dashboard modal will appear asking you to select the home folder. Read directly below for what to do from here;
 
+#### **Remote Agent**
+
+Please check our [How to use Seedbucket Remote Agent](../How_to_use_Seedbucket_Remote_Agent.md) guide.
+
 ### Adding your connected drives to your dashboard
 
 **3)** After you finish adding your external storage drives, along with any crypt drives (optional), you will be re-directed back to your Seedbucket and specifically at the dashboard modal. The new storage drive will have been added and the dashboard modal will show the connected drives. You will then be able to choose the drive and proceed with creating your new dashboard for that drive when you click **"Next"**
